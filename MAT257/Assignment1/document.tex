@@ -1,0 +1,334 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{setspace}
+\usepackage{ amssymb }
+
+\allowdisplaybreaks
+\newcommand{\tinyquot}[1]{\begin{center}{\footnotesize #1}\end{center}}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+\addtolength{\belowdisplayskip}{-25mm}
+\begin{document}
+\title{Assignment 14 - MAT257}
+\author{David Knott \\  Student \#999817685}
+\date{September 18, 2013}
+\maketitle
+\begin{enumerate}
+	\item Munkres, \S1.1, Question 1
+	\begin{enumerate}[a)]
+		\item Consider the given $\|cx + dy\| \geq 0$ where $x, y \neq 0$, $c = \frac{1}{\|x\|}$ and $d = \frac{1}{\|y\|}$. If $\|x\| = \sqrt{\langle x, x \rangle}$ then we have:
+		\begin{align*}
+			0 & \leq \|cx + dy\| \iff \\
+			0 & \leq \sqrt{\langle cx + dy, cx + dy \rangle} \iff \\
+			0 & \leq \sqrt{\langle cx, cx + dy \rangle + \langle dy, cx + dy \rangle} \iff \\
+			0 & \leq \sqrt{\langle cx, cx \rangle + \langle cx, dy \rangle + \langle dy, cx \rangle + \langle dy, dy \rangle} \iff \\
+			0 & \leq \sqrt{c^2 \langle x, x \rangle + 2cd\langle x, y \rangle + d^2 \langle y, y \rangle}  \iff \\
+			0 & \leq \sqrt{c^2 \|x\|^2 + 2cd\langle x, y \rangle + d^2 \|y\|^2 }  \iff \\
+			0 & \leq \sqrt{2 + 2cd\langle x, y \rangle }  \iff \\
+			0 & \leq 2 + 2cd\langle x, y \rangle   \iff \\
+			2cd\langle x, y \rangle & \leq 2   \iff \\
+			\langle x, y \rangle & \leq \frac{1}{cd}   \iff \\
+			\langle x, y \rangle & \leq \|x\|\cdot\| y \| 
+		\end{align*}
+		If $x$ or $y$ is zero we have equality.
+		\item Note that $\|x + y\|^2 = \langle x+y, x+y\rangle = 2\langle x, y\rangle + \|x\|^2 + \|y\|^2$. From (a) we have that $\langle x, y \rangle \leq \|x\|\cdot\| y \|$. Starting with this inequality, we find:
+		\begin{align*}
+			\langle x, y \rangle & \leq \|x\|\cdot\| y \| \iff \\
+			2 \langle x, y \rangle & \leq 2 \|x\|\cdot\| y \| \iff \\
+			2 \langle x, y \rangle + \|x\|^2 + \|y\|^2 & \leq 2 \|x\|\cdot\| y \| + \|x\|^2 + \|y\|^2 \iff \\
+			\|x + y\|^2 & \leq 2 \|x\|\cdot\| y \| + \|x\|^2 + \|y\|^2 
+		\end{align*}
+		By factoring the right side in terms of $\|x\|$ and $\|y\|$ then square rooting both sides we conclude:
+		\begin{align*}
+			\|x + y\|^2 & \leq 2 \|x\|\cdot\| y \| + \|x\|^2 + \|y\|^2 \iff \\
+			\|x + y\|^2 & \leq (\|x\| + \| y \|)^2 \iff \\
+			\|x + y\| & \leq \|x\| + \| y \|
+		\end{align*}
+		\item We approach this the same way as (b). Note that $\|x - y\|^2 = \langle x-y, x-y\rangle = -2\langle x, y\rangle + \|x\|^2 + \|y\|^2$. From (a) we have that $\langle x, y \rangle \leq \|x\|\cdot\| y \|$. Starting with this inequality, we find:
+		\begin{align*}
+			\langle x, y \rangle & \leq \|x\|\cdot\| y \| \iff \\
+			-2 \langle x, y \rangle & \geq -2 \|x\|\cdot\| y \| \iff \\
+			-2 \langle x, y \rangle + \|x\|^2 + \|y\|^2 & \geq -2 \|x\|\cdot\| y \| + \|x\|^2 + \|y\|^2 \iff \\
+			\|x - y\|^2 & \geq -2 \|x\|\cdot\| y \| + \|x\|^2 + \|y\|^2 
+		\end{align*}
+		By factoring the right side in terms of $\|x\|$ and $\|y\|$ then square rooting both sides we conclude:
+		\begin{align*}
+			\|x - y\|^2 & \geq -2 \|x\|\cdot\| y \| + \|x\|^2 + \|y\|^2 \iff \\
+			\|x - y\|^2 & \geq (\|x\| - \| y \|)^2 \iff \\
+			\|x - y\| & \geq \|x\| - \| y \|
+		\end{align*}
+	\end{enumerate}
+	\item Munkres, \S1.1, Question 3
+
+	Suppose, for the sake of contradiction, that the sup norm is derived from an inner product. Then, from the polarization identity, we have:
+	$$ \langle x, y \rangle = \frac{|x+y|^2 - |x-y|^2}{4} $$
+	To prove that the sup norm is not derived from an inner product it suffices to prove that the above definition violates one of the inner product properties. Indeed for the vectors $x = (1,0)$, $y = (0, 1)$ and $z = (1, 1)$ we find that:
+	\begin{align*}
+		\langle x + y, z \rangle & \neq \langle x, z \rangle + \langle y, z \rangle 
+	\end{align*}
+	Because
+	\begin{align*}
+		 \langle x + y, z \rangle & = \frac{|x+y+z|^2 - |x+y-z|^2}{4} \\
+		 & = \frac{|(2,2)|^2 - |(0,0)|^2}{4} \\
+		 & = \frac{2^2}{4} \\
+		 & = 1
+	\end{align*}
+	But
+	\begin{align*}
+		 \langle x, z \rangle + \langle y, z \rangle & = \frac{|x+z|^2 - |x-z|^2 + |y+z|^2 - |y-z|^2}{4}  \\
+		 & = \frac{|(2,1)|^2 - |(0,-1)|^2 + |(1,2)|^2 - |(-1,0)|^2}{4} \\
+		 & = \frac{2^2 - 1^2 + 2^2 - 1^2}{4} \\
+		 & = \frac{3}{2}
+	\end{align*}
+	Therefore, the sup norm is not derived from an inner product.
+
+	\item Munkres, \S1.1, Question 4
+	\begin{enumerate}[a)]
+		\setcounter{enumii}{1}
+		\item For this question we will work backwards as to benefit from the generalization achieved by b. Consider the following:
+		$$ \langle \  , \   \rangle _{a,b,c} : \mathbb{R}^2 \times \mathbb{R}^2 \rightarrow \mathbb{R} $$
+		\begin{align*}
+		  \langle x , y \rangle _{a,b,c} & = 
+			\begin{bmatrix}
+				x_{1} & x_{2}
+			\end{bmatrix}
+			\begin{bmatrix}
+				a & b \\
+				b & c 
+			\end{bmatrix}
+			\begin{bmatrix}
+				y_{1} \\
+				y_{2} 
+			\end{bmatrix} \\
+			& = a x_{1} y_{1} + b(y_{1} x_{2} + x_{1} y_{2}) + c x_{2} y_{2}
+		\end{align*}
+		\begin{align*}
+			\langle x, x \rangle _{a,b,c} & = a (x_{1})^2 + 2b x_{1} x_{2} + c (x_{2})^2
+		\end{align*}
+		Despite the fact that it's not the square root, I will call the inner product of a vector with itself the vector's \emph{norm}, for the lack of a better term.
+
+		To prove the iff assertion, we will first assume that the function $\langle x , y \rangle _{a,b,c} $ is a inner product of $\mathbb{R}^2$, then show that this implies $b^2 - ac < 0$ and $a > 0$ and $c > 0$. Note that $b^2 - ac < 0$ and $a > 0$ imply $c > 0$
+
+		Given the inner product $\langle x , y \rangle _{a,b,c} $ consider the point $x \in \mathbb{R}^2$ where $x = (x_{1},x_{2})$ and $x \neq 0$.
+
+		If $x_{1} = 0$ then $x_{2} \neq 0$, and the norm of $x$ will be:
+		\begin{align*}
+			\langle x, x \rangle _{a,b,c} & = a (x_{1})^2 + 2b x_{1} x_{2} + c (x_{2})^2 \\
+			 & = c (x_{2})^2
+		\end{align*}
+		Since the norm of $x$ will be positive for all values $x \neq 0$ and $x_{2}^2$ must be positive, this implies $c$ must also be positive. Repeating this process for $x_{2} = 0$ yields the implication that $a$ must also be only positive. Thus we conclude that both $a > 0$ and $c > 0$.
+
+		For the case that $x_{1}, x_{2} \neq 0$, consider the function:
+		$$ f_x : \mathbb{R} \rightarrow \mathbb{R} $$
+		\begin{align*}
+			f_x(t) &= \langle (x_{1}, t), (x_{1}, t) \rangle _{a,b,c} \\
+			& = a (x_{1})^2 + 2b x_{1} t + c t^2
+		\end{align*}
+		Which parameterizes the norm of all vectors who's $x_1$ component is that of $x$. Since $x_1$ is non-zero the function will never take the norm of $(0,0)$. This means the function will always be positive. Since $f_x$ is an always positive polynomial with respect to $t$, it's discriminant should be less than zero. Taking the discriminant yields:
+		\begin{align*}
+			\Delta_t &= 4b^2(x_1)^2 - 4ac(x_1)^2 \\
+			& < 0
+		\end{align*}
+		Dividing both sides by $4(x_1)^2$ gives:
+		$$ b^2 - ac < 0$$
+		We get the same result if we define $f_x(t) = \langle (t, x_{2}), (t, x_{2}) \rangle _{a,b,c}$
+
+		% As one can see the only difference between the functions are which variable is fixed. The value of the function $f_z(w)$ is the norm of every point on the line $x = z$, whereas the function $f_w(z)$ is the norm of every point on the line $y = w$.
+
+		% Since the inner product must satisfy the property $\langle x, x \rangle > 0$ if $x \neq 0$ this implies that the functions above must be positive for all values $z$ or $w$. Since the functions are continuous, this implies the assertions
+		% \begin{enumerate}[i.]
+		% 	\item $f_z(0) > 0$
+		% 	\item $f_z$ has no roots 
+		% \end{enumerate}
+		% Which apply to $f_w$ also.
+
+		% Assertion i.\ implies that both $c > 0$ and $a > 0$, since when we simplify $f_z(0)$ and $f_w(0)$ we find
+		% $$ f_z(0) = a z^2 $$
+		% $$ f_w(0) = c w^2 $$
+		% If $c$ or $a$ are non-positive then the $\langle x, x \rangle > 0$ property will be violated.
+
+		% Assertion ii.\ implies that the discriminant of both $f_z$ and $f_w$ should be less than 0. Taking the discriminant of these functions yields
+		% \begin{align*}
+		% 	D(f_z) & = 4 b^2 z^2 - 4 a c z^2 \\
+		% 	D(f_z) & < 0 \\
+		% 	4 b^2 z^2 - 4 a c z^2 & < 0 \\
+		% 	b^2 - a c & < 0 \\
+		% \end{align*}
+		% The result is the same for $f_w$.
+
+		For the converse argument, we assume $b^2 - ac < 0$, $a > 0$ and $c > 0$. To prove that $\langle x , y \rangle _{a,b,c}$ is an inner product we show that the following properties hold:
+
+		\begin{enumerate}[i.]
+			\item $\langle x, y \rangle = \langle y, x \rangle$
+			\item $\langle x + y, z \rangle = \langle x, z \rangle + \langle y, z \rangle$
+			\item $\langle cx, y \rangle = c\langle x, y \rangle = \langle x, cy \rangle$
+			\item $\langle x, x \rangle > 0$ if $x \neq 0$
+		\end{enumerate}
+
+		The property i.\ is equivalent to the assertion $\langle x, y \rangle - \langle y, x \rangle = 0$. Expanding this out, we get:
+		\begin{align*}
+			0 &= \langle x, y \rangle - \langle y, x \rangle \\
+			&= a x_{1} y_{1} + by_{1} x_{2} + bx_{1} y_{2} + c x_{2} y_{2} \\
+			& \quad - (a y_{1} x_{1} + bx_{1} y_{2} + by_{1} x_{2} + c y_{2} x_{2})
+		\end{align*}
+
+		All the terms cancel out to give 0.
+
+		For ii., recall the matrix definition $\langle x, y \rangle = x \cdot \mathbf{C} \cdot y$
+		where $ \mathbf{C} = \bigl(\begin{smallmatrix}
+			a&b\\ b&c
+		\end{smallmatrix} \bigr)$ and $x$ and $y$ are in column and row representations respectively. Applying matrix properties on $\langle x + y, z \rangle$ gives:
+		\begin{align*}
+			\langle x + y, z \rangle &= (x+y) \cdot \mathbf{C} \cdot z \\
+			 &= x \cdot \mathbf{C} \cdot z + y \cdot \mathbf{C} \cdot z \\
+			 &= \langle x, z \rangle + \langle y, z \rangle
+		\end{align*}
+
+		By again inheriting matrix multiplication properties, we prove iii.\ like so:
+		\begin{align*}
+			c\langle x, y \rangle &= c(x \cdot \mathbf{C} \cdot y) \\
+			 &= (cx) \cdot \mathbf{C} \cdot y \\
+			 &= \langle cx, y \rangle \\
+			c\langle x, y \rangle &= c(x \cdot \mathbf{C} \cdot y) \\
+			 &= x \cdot \mathbf{C} \cdot (cy) \\
+			 &= \langle x, cy \rangle 
+		\end{align*}
+
+		iv.\ is a bit trickier, and we fall back on the function $f_x(t)$ from the proof of the converse. If we let $x \in \mathbb{R}^2$ and $x \neq 0$, then  
+
+		\setcounter{enumii}{0}
+		\item Since $2 > 0$, $1 > 0$ and $(-1)^2 - 2\cdot 1 = -1 < 0$, by application of (b) we have that $\langle x, y \rangle$ is an inner product of $\mathbb{R}^2$
+	\end{enumerate}
+	\item Additional work. Question 1
+
+	\begin{enumerate}[a)]
+		\item
+		%Consider the inner product definition for integrable functions within some interval $[a, b]$ where $a \leq b$, defined by the set $\mathcal{F}$:
+		% $$ \langle \  , \   \rangle : \mathcal{F} \times \mathcal{F} \rightarrow \mathbb{R} $$
+		% \begin{align*}
+		%   \langle x , y \rangle & = \int_{a}^{b} x(t)\cdot y(t) \ dt
+		% \end{align*}
+		% Proving the first three inner product properties is easy, as they directly follow from integral calculus. For symmetry we find:
+		% \begin{align*}
+		%   \langle x , y \rangle & = \int_{a}^{b} x(t)\cdot y(t) \ dt \\
+		%   & = \int_{a}^{b} y(t)\cdot x(t) \ dt \\
+		%   & = \langle y , x \rangle 
+		% \end{align*}
+		% For linearity in the first argument:
+		% \begin{align*}
+		%   \langle x + y , z \rangle & = \int_{a}^{b} ( x(t) + y(t) )\cdot y(t) \ dt \\
+		%   & = \int_{a}^{b} x(t)\cdot z(t) + y(t)\cdot z(t)\ dt \\
+		%   & = \int_{a}^{b} x(t)\cdot z(t)\ dt + \int_{a}^{b} y(t)\cdot z(t)\ dt \\
+		%   & = \langle x , z \rangle + \langle y , z \rangle \\ 
+		%   \\
+		%   \langle cx, y \rangle & = \int_{a}^{b} cx(t)\cdot y(t) \ dt \\
+		%   & = \int_{a}^{b} x(t)\cdot cy(t) \ dt \\
+		%   & = \langle x, cy \rangle \\
+		%   \langle cx, y \rangle & = \int_{a}^{b} cx(t)\cdot y(t) \ dt \\
+		%   & = c\int_{a}^{b} x(t)\cdot y(t) \ dt \\
+		%   & = c\langle x, y \rangle 
+		% \end{align*}
+		% For the question of the last property, we must prove two things. One, if $\langle f, f \rangle = \int_{a}^{b} f(t)^2 \ dt  = 0$ for function $f$ in $[a, b]$ then $f(x) = 0$ for all $x \in [a, b]$. To do this we suppose, for contradiction, that there is some $f$ such that $\langle f, f \rangle = 0$ but $f \neq 0$. We can't do much here unless we assume all functions in this space are continuous. Assuming $f$ is continuous and non-zero, there is some $\alpha \in [a, b]$ such that $f(\alpha) \neq 0$. Since $f$ is continuous there will be some $\epsilon$-neighbourhood around $\alpha$ such that for all $\delta \in [\alpha - \epsilon, \alpha + \epsilon]$ we have $f(\delta) \neq 0$. Since the lower bound on any integral is the lower sum for any partition of $[a, b]$, we can simply choose the partition $\{a, \alpha - \epsilon/2, \alpha, b\}$. It's easy to see that the infimum of $f$ within the interval $[\alpha - \epsilon, \alpha]$ will be non-zero, and hence $f^2$ will be positive and hence the lower bound on the integral will be positive. This contradicts the assumption that $\langle f, f \rangle = 0$.
+
+		% The second thing is the assertion that $\langle f, f \rangle$ is non-negative on $[a, b]$.  This is obvious since we're taking the integral of a non-negative function, namely $f^2$.
+
+		% Now given that we've proved $\langle f, f \rangle$ is an inner product, we shall define the norm $\| f \| = \langle f, f \rangle ^ \frac{1}{2}$. Then, we apply the Cauchy–Schwarz inequality:
+		% \begin{align*}
+		%   \langle f, g \rangle & \leq \|f\| \cdot \|g\| \iff \\
+		%   \int_{a}^{b} f(t) \cdot g(t)\ dt & \leq \Bigg( \sqrt{ \int_{a}^{b} f(t)^2\ dt } \Bigg)\cdot \Bigg( \sqrt{ \int_{a}^{b} g(t)^2\ dt } \Bigg) \implies \\
+		%   \Bigg( \int_{a}^{b} f(t) \cdot g(t)\ dt  \Bigg)^2 & \leq \Bigg(  \int_{a}^{b} f(t)^2\ dt \Bigg)\cdot \Bigg( \int_{a}^{b} g(t)^2\ dt \Bigg)
+		% \end{align*}
+		Consider the integral:
+		\begin{align*}
+		  \int_{a}^{b} \big( f(t) - \lambda g(t) \big)^2 \ dt &= \int_{a}^{b} f(t)^2\ dt - \lambda \int_{a}^{b} f(t)g(t)\ dt + \lambda^2 \int_{a}^{b} g(t)^2 \ dt\\
+		  & \geq 0
+		\end{align*}
+		Since it's the integral of a square. It is also a polynomial in terms of $\lambda$. Since it has at most one root, then it's discriminant in terms of $\lambda$ must be non-positive. This means we have:
+		\begin{align*}
+			\Delta_{\lambda} & \leq 0 \iff \\
+		  \Bigg( \int_{a}^{b} f(t)g(t)\ dt \Bigg)^2 - \Bigg( \int_{a}^{b} f(t)^2\ dt \Bigg) \cdot \Bigg( \int_{a}^{b} g(t)^2 \ dt \Bigg) & \leq 0 \iff \\
+		  \Bigg( \int_{a}^{b} f(t)g(t)\ dt \Bigg)^2 & \leq \Bigg( \int_{a}^{b} f(t)^2\ dt \Bigg) \cdot \Bigg( \int_{a}^{b} g(t)^2 \ dt \Bigg) 
+		\end{align*}
+		\item Suppose $f = \lambda g$, then we have:
+		\begin{align*}
+		  \Bigg( \int_{a}^{b} \lambda g(t)^2\ dt \Bigg)^2 & \leq \Bigg( \int_{a}^{b} \lambda^2 g(t)^2\ dt \Bigg) \cdot \Bigg( \int_{a}^{b} g(t)^2 \ dt \Bigg) \iff \\
+		  \lambda^2 \Bigg( \int_{a}^{b} g(t)^2\ dt \Bigg)^2 & \leq \lambda^2 \Bigg( \int_{a}^{b} g(t)^2\ dt \Bigg) \cdot \Bigg( \int_{a}^{b} g(t)^2 \ dt \Bigg)
+		\end{align*}
+		And equality is obviously true.
+
+		Now instead suppose that, for some continuous $f, g$, we have:
+		\begin{align*}
+		  \Bigg( \int_{a}^{b} f(t)g(t)\ dt \Bigg)^2 & = \Bigg( \int_{a}^{b} f(t)^2\ dt \Bigg) \cdot \Bigg( \int_{a}^{b} g(t)^2 \ dt \Bigg) 
+		\end{align*}
+		Note that since this implies the discriminant for the polynomial from part (a) is zero, this means the polynomial has exactly one root. In other words, there exists a $\lambda$ such that:
+		\begin{align*}
+		  \int_{a}^{b} \big( f(t) - \lambda g(t) \big)^2 \ dt &= 0
+		\end{align*}
+		To continue we must prove that $\int f^2 = 0 \implies f = 0$ if $f$ is a continuous function. 
+
+		To do this suppose, for contradiction, that there is some $f$ such that $\int f^2 = 0$ but $f \neq 0$. Hence, there is some $\alpha \in [a, b]$ such that $f(\alpha) \neq 0$. Since $f$ is continuous there will be some $\epsilon$-neighborhood around $\alpha$ such that for all $\delta \in [\alpha - \epsilon, \alpha + \epsilon]$ we have $f(\delta) \neq 0$.
+
+		Since the lower bound on any integral is the lower sum for any partition of $[a, b]$, we can simply choose the partition $\{a, \alpha - \epsilon/2, \alpha, b\}$.	It's easy to see that the infimum of $f$ within the interval $[\alpha - \epsilon/2, \alpha]$ will be non-zero, and hence $f^2$ will be positive and hence the lower bound on the integral will be positive. This contradicts the assumption that $\int f^2 = 0$.
+
+		So, this means that:
+		\begin{align*}
+		  \int_{a}^{b} \big( f(t) - \lambda g(t) \big)^2 \ dt &= 0 \implies \\
+		  f(t) - \lambda g(t) &= 0 \implies \\
+		  f(t) &= \lambda g(t)
+		\end{align*}
+		\item Consider the functions $f, g$ such that if $x \in \big((k-1), k \big)$ for some $k = 1 , 2 , \dots , n$:
+		$$f(x) = a_k$$
+		$$g(x) = b_k$$
+		Note that for $f$ (and likewise, $g$), integrating over $[0, n]$ yields:
+		\begin{align*}
+		  \int_{0}^{n} f(t) \ dt &= \sum_{k=1}^{n} \int_{k-1}^{k} f(t)\ dt \\
+		  &= \sum_{k=1}^{n} a_k \\
+		  \int_{0}^{n} f(t)^2 \ dt &= \sum_{k=1}^{n} \int_{k-1}^{k} f(t)^2\ dt \\
+		  &= \sum_{k=1}^{n} (a_k)^2 \\
+		\end{align*}
+		Furthermore, we have:
+		\begin{align*}
+		  \int_{0}^{n} f(t)\cdot g(t) \ dt &= \sum_{k=1}^{n} \int_{k-1}^{k} f(t) \cdot g(t)\ dt \\
+		  &= \sum_{k=1}^{n} a_k \cdot b_k\\
+		\end{align*}
+		So from our proven inequalities, we find that:
+		\begin{align*}
+		  \Bigg( \int_{0}^{n} f(t)g(t)\ dt \Bigg)^2 & \leq \Bigg( \int_{0}^{n} f(t)^2\ dt \Bigg) \cdot \Bigg( \int_{0}^{n} g(t)^2 \ dt \Bigg) \iff \\
+		  \Bigg( \sum_{k=1}^{n} a_k \cdot b_k \Bigg)^2 & \leq \Bigg( \sum_{k=1}^{n} (a_k)^2  \Bigg) \cdot \Bigg( \sum_{k=1}^{n} (b_k)^2  \Bigg) 
+		\end{align*}
+	\end{enumerate}
+	\item Additional work. Question 2
+	\begin{enumerate}[a)]
+		\item First assume that $\langle x, y \rangle = \langle T(x), T(y) \rangle$ for all $x, y \in \mathbb{R}^n$. Then, for any $x$:
+		\begin{align*}
+		  \|x\| & = \sqrt{\langle x, x \rangle} \\
+		  & = \sqrt{\langle T(x), T(x) \rangle} \\
+		  & = \|T(x)\| 
+		\end{align*}
+		So inner product preservation implies norm preservation.
+		Going the other way, using the polarization identity we can resolve the inner product from the norm. Assuming for all $x \in \mathbb{R}^n$ that $\|x\| = \|T(x)\|$ we find:
+		\begin{align*}
+		  \langle x, x \rangle & = \frac{1}{4} ( \|x+y\|^2 - \|x - y\|^2 ) \\
+		  & = \frac{1}{4} ( \|T(x+y)\|^2 - \|T(x - y)\|^2 ) \\
+		  & = \frac{1}{4} ( \|T(x)+T(y)\|^2 - \|T(x) - T(y)\|^2 ) \\
+		  & = \langle T(x), T(y) \rangle 
+		\end{align*}
+		So the converse is also true.
+		\item The proof of this relies on the rank-nullity theorem, which, for our purposes, implies that if the nullity of $T$ is zero then the rank is $n$, and thus $T$ is invertible.
+
+		The nullity of a transformation is the dimension of the space of vectors $x$ such that $T(x) = 0$. If there are no vectors other than 0 that satisfy this, then the nullity of $T$ must be zero. Indeed, since we've assumed that $T$ is norm-preserving, we find that if there was an $x \neq 0$ where $T(x) = 0$, then $0 < \|x\| = \| T(x) \| = 0$, which is a contradiction. Thus, the rank of $T$ must be $n$.
+
+		This means if a linear transformation is norm preserving then it must be invertible, and since it's invertible it must be 1-1.
+
+		Because it's 1-1, for all $y \in \mathbb{R}$ there's a corresponding $x \in \mathbb{R}$ such that $y = T(x)$ or $T^{-1}(y) = x$. Since $\| y \| = \| T(x) \| = \| x \|$, norming both sides of the second equation yields $\| T^{-1}(y) \| = \| x \| = \| y \|$. So the inverse is norm preserving, too.
+	\end{enumerate}
+\end{enumerate}
+\end{document}
+
+	

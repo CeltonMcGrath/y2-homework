@@ -1,0 +1,120 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+% \usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{setspace}
+\usepackage{ amssymb }
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{Assignment 1 - CSC265}
+\rhead{David Knott, \#999817685}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+% http://www.maths.tcd.ie/~dwilkins/LaTeXPrimer/Theorems.html
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+
+% \def\pball{\mathrel{%
+%     \mathchoice{\PBALL}{\PBALL}{\scriptsize\PBALL}{\tiny\PBALL}%
+% }}
+% \def\PBALL{{%
+%     \setbox0\hbox{B}%
+%     \rlap{\hbox to \wd0{\hss|\hss}}\box0
+% }}
+
+\allowdisplaybreaks
+\newcommand{\tinyquot}[1]{\begin{center}{\footnotesize #1}\end{center}}
+\newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
+\addtolength{\belowdisplayskip}{-25mm}
+\begin{document}
+\title{Assignment 1 - CSC265}
+\author{David Knott \\  Student \#999817685}
+\date{September 30, 2013}
+\maketitle
+\begin{enumerate}
+	\item 
+	% To begin I define a few functions to help with the proofs. If $P$ is a pennant forest of length $m$, then the function $L(P, i)$ where $i \in [0, m]$ is the size of the set $\{ p \in P \ \big|\  \mathrm{height}(p) \in [0, i] \}$. From the 3rd and 4th properties $L(P, i) \in [i+1, i+2]$.
+	\begin{enumerate}[a)]
+		\item
+		\item Note that a heap of height $n$ contains at most $2^n - 1$ nodes and at least $2^{n-1}$ nodes. If the heap contains the maximum amount of nodes, or is ``complete'', then it's easy to turn into a pennant. If we take the root node drop it's left subtree we get a pennant of height $n$ (the root node + it's right subtree) and a heap of height $n-1$ (the root's left subtree). Since the left subtree is a complete heap, we can simply repeat this process to obtain a pennant forest with $n$ pennants, where pennant $p_n$ is of height $n$. This process only takes $\log(n)$ time, since the most we're doing is traversing down the left side of the tree and copying pointers as we go.
+
+		For an incomplete heap we use a recursive algorithm that, given a node in the heap, outputs a pennant forest made of the heap of height $n$ rooted at the input node. Note that for any node in a heap only one of the four conditions appy:
+		\begin{enumerate}[i.]
+			\item The node is the root of a complete heap.
+			\item The node's left and right subtrees are complete heaps, but the left subtree is higher than the right by one level.
+			\item The node's right subtree is a complete heap, but the left subtree is higher than the right by one level and is incomplete.
+			\item The node's left subtree is a complete heap, but the right subtree is incomplete. The two subtrees have the same height.
+		\end{enumerate}
+		So for any node in the tree, our algorithm will do one the following for each of the conditions described above:
+		\begin{enumerate}[i.]
+			\item The function simply turns the node and it's children into a pennant forest using the process described in the first paragraph.
+			\item The function calls itself on the left subtree, yielding the pennant forest $P$. Since $P$'s largest pennant is of size $n-2$ and has only one pennant per height, the function appends the pennant made from the input node and the right subtree, which will be of height $n-2$. The function then returns this forest after ordering the last two pennants.
+			\item The function does the same as above. The largest pennant in the forest returned is less than or equal to $n-2$, and there is strictly one or less pennants of size $n-2$. This means the function can append the pennant made out of the input node and it's right subtree while still maintaining the pennant forest property.
+			\item The function calls itself on the right subtree, which will yield a pennant forest who's maximum pennant is at most height $n-2$. The function adds the pennant made from the input node and it's left child, which will be of height $n-1$.
+		\end{enumerate}
+		This function also runs in $\log(n)$ time, since for each level of the tree the function is called at most once, since the function calls itself on only one subtree.
+		\item
+		\item Take the root of the pennant ($a$) and the root of the pennant's binary tree ($b$) as the roots of two new pennants. Take off the left subtree of $b$ and attach it to $a$. Since $a \geq b \geq $ any child of $b$, the two pennants will satisfy the priority property. Since we only do a constant amount of pointer swapping, this algorithm takes constant time. 
+		\item Suppose these two pennants are called $X$ and $Y$. The root of $X$ will be called $a$ and the child of $a$ will be called $b$. The root of $Y$ will be called $c$ and the child of $c$ will be called $d$. Assume that $a \geq c$ (if this isn't true simply swap X with Y). There are three possibilities:
+		\begin{enumerate}[i.]
+			\item $a \geq b \geq c \geq d$
+			\item $a \geq c \geq b \geq d$
+			\item $a \geq c \geq d \geq b$
+		\end{enumerate}
+		And for any of these conditions, the algorithm will behave as such:
+		\begin{enumerate}[i.]
+			\item The new pendant will take $a$ as it's root and $b$ as it's child. The right subtree of $b$ will be the one rooted at $d$. The left subtree will be the one rooted at $b$, but with it's root replaced with $c$. In $\log(n)$ time, $c$ will bubble down the heap it has become the root of. This will yield a pennant of size $n$ in logarithmic time.
+			\item The new pendant will take $a$ as it's root and $c$ as it's child. The right subtree of $c$ will be the one rooted at $d$. The left subtree will be the one rooted at $b$. This will produce a pennant of size $n$ in constant time.
+			\item Works the same as above.
+		\end{enumerate}
+		The worst case running time of this algorithm is logarithmic in the height of the input pennants.
+		\item
+	\end{enumerate}
+	\clearpage
+	\item 
+	\begin{enumerate}[a)]
+		\item A $d$-ary heap would be represented in an array much in the same way a binary heap is, only instead of $2^l$ array entries for the level $l$, one would need $d^l$ entries. When it comes to traversal, the node at array entry $n$'s $r$th child would be referenced with the function $dn + r$, where $r$ is in the range $[1, d]$. Traversing to the parent node from $n$ is done with the formula $\floor{n/d}$.
+		\item A $d$-ary heap with $n$ elements has a height of $\ceil{\log_d(n)}$
+		\item Just like in a binary heap, ExtractMax removes and returns the root node of the heap, replacing it with the last element in the last layer. This new element then bubbles down the heap by recursively comparing itself with it's children then swapping itself with the maximum element that's greater than it (if there's no such element then the algorithm ends.) Because this bubbling takes time proportional to the height of the tree and at each level must do $d$ comparisons (finding the maximum child takes $d-1$ comparisons, and comparing the max with the current parent takes $1$ comparison), the amount of comparisons done in the worst case will be about $d \ceil{\log_d(n)}$, which is in $O(\log n)$ time.
+		\item Insert will put the element in the next available spot on the heap, then bubble it up recursively. The rules for this bubble up procedure are: if the parent is smaller than the inserted element their positions are swapped and the algorithm continues, if the parent is larger then the heap property has been restored and the algorithm ends. The worst case in this scenario would be the inserted element has the largest value out of any of the elements in the heap, so we must preform $\ceil{\log_d(n)}$ swaps with 1 comparison per swap. Hence this algorithm runs in $O(\log n)$ time.
+		\item IncreaseKey works much the same as the above algorithm. We simply change the element's value and bubble it up through the heap, taking at most $\ceil{\log_d(n)}$ comparisons, making it in $O(\log n)$ time.
+	\end{enumerate}
+	\clearpage
+	\item 
+	\begin{enumerate}[a)]
+		\item For this problem we convert each list into a binomial min-heap. This is easy since we know the length of each list and hence the structure of it's corresponding binomial heap. This is because $n/k = \sum_k^{\ceil{log_2 n/k}} x_k 2^k$ for some bit vector $x$ (the binary representation of $n/k$) and the set $S = \{ k \in \mathbb{N} \ \big|\ x_k = 1 \}$ is the sizes of the binomial trees we must use in the heap. So to construct the heap from a list $L$ of size $n/k$ we simply iterate over $k \in S$, popping $2^k$ elements from the list to produce a binomial tree of height $k$.
+
+		Once we do this for all input lists, we have a series of binomial heaps $B_1,\dots,B_k$. This takes $c \frac{n}{k}k = cn$ operations, where $c$ is the constant satisfying $c\frac{n}{k} = f(\frac{n}{k})$ where $f(x)$ is the amount of operations it takes to binomialize a sorted list of length $x$. Merging two binomial heaps takes $O(\log(n))$ time, where $n$ is the number of nodes in the largest heap.
+
+		To merge all these heaps together, we do a tournament style system where we merge every odd numbered heap to the even numbered heap next to it. We repeat this around $\log(k)$ times to yield one binomial heap with $n$ nodes. We then call ExtractMin on this heap $n$ times to produce the sorted list.
+	\end{enumerate}
+	
+
+\end{enumerate}
+\end{document}
