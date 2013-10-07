@@ -44,65 +44,118 @@
 \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
 \addtolength{\belowdisplayskip}{-25mm}
 \begin{document}
-\title{Assignment 3 - MAT257}
+\title{Assignment 4 - MAT257}
 \author{David Knott \\  Student \#999817685}
-\date{September 30, 2013}
+\date{October 7, 2013}
 \maketitle
 \begin{enumerate}
-	\item 
+	\item Munkres Question 1
+
+	Since $f'(a; u) = Df(a) \cdot u$, then $f'(a; cu) = Df(a) \cdot cu = c(Df(a) \cdot u) = cf'(a; u)$.
+
+	\item Munkres Question 2
 	\begin{enumerate}[a)]
-		\item Since $A$ is closed this means $A^c$ will be open. This implies for every $x \notin A$ there is an epsilon-neighborhood around $x$ that does not intersect with $A$. This epsilon will be less than or equal to the distance between $x$ and any $y \in A$, since if the distance were less, then $y$ would be in the epsilon-neighborhood of $x$ that doesn't intersect with $A$ and that's a contradiction.
-		\item Suppose there doesn't exist an $\epsilon > 0$. Consider the set $S_\epsilon = \{ x \in \mathbb{R}^n \ \big|\ \forall y \in B. d(x, y) < \epsilon \}$. If there's no epsilon, then $S_\epsilon \cap A \neq \emptyset$ for any $\epsilon > 0$. If we take the sequence $\{ x_n \}$ where $x_n$ is a point in the set $S_{1/n} \cap A$ then we have a convergent sequence to a point in the border of $B$. Since $A$ is closed, then the point that $\{x_n\}$ converges to must also be in $A$. But it's given that $B \cap A = \emptyset$. So we have a contradiction.
-		% \item
+		\item Note that the function $f:\mathbb{R}^2 \to \mathbb{R}$ can be rewritten like so:
+		\[
+		 f((x,y)) =
+		  \begin{cases}
+		   \frac{xy}{\|(x,y)\|^2} & \text{if } (x, y) \neq 0 \\
+		   0       & \text{if } (x, y) = 0
+		  \end{cases}
+		\]
+		Let $u = (h, k)$ be an arbitrary, non-zero vector. The directional derivative of $f$ at origin with respect to $u$ will then be:
+		\begin{align*}
+			f'(0; u) & = \lim_{t \to 0} \frac{f(0 + tu) - f(0)}{t} \\
+			& =  \lim_{t \to 0} \frac{thtk}{\|t(h,k)\|^2}\frac{1}{t} \\
+			& =  \lim_{t \to 0} \frac{t^2hk}{t^3\|(h,k)\|^2} \\
+			& =  \lim_{t \to 0} \frac{hk}{t\|(h,k)\|^2}
+		\end{align*}
+		This limit will only exist when $h$ or $k$ are zero. When this is the case, the limit will evaluate to zero.
+		\item Since $D_1 f$ and $D_2 f$ are the directional derivatives of elementary unit vectors then $k$ or $h$ will be zero, and thus both of these will be zero.
+		\item The function is not differentiable since some of the directional derivatives don't exist.
+		\item The function is not continuous, since if $x = y$ then the limit of the function $\phi(x) = f((x,x)) = \frac{1}{2}$ as $x \to 0$ is $\frac{1}{2}$, however if $-x = y$ then the limit of the function $\phi(x) = f((x,-x)) = -\frac{1}{2}$ as $x \to 0$ is $-\frac{1}{2}$.
 	\end{enumerate}
-	\item Since $K$ is compact, it must be closed and bounded. Since $K \subset U$, then all points $x$ in $K$ will have an epsilon-neighborhood around $x$ that's completely contained within $U$. Suppose $\epsilon_x$ denotes the size of the neighborhood around the point $x$ that satisfies the above condition. If we take the minimum of $\epsilon_x$ for all $x \in K$, call it $\epsilon_{min}$, then for all $x \in K$, $B(x, \epsilon_{min}) \subset U$.
 
-	Notice that $\bigcup_{x \in K} B(x, \epsilon_{min})$ is an open set contained completely within $U$ that covers $K$. If we take the closure of that set, however, it might be that it's border lies outside of $U$. So, we prove the lemma that $\overline{B(x, \epsilon/2)} \subset B(x, \epsilon)$ for any $x$ or $\epsilon$.
-	
-	\begin{lemma}
-		\label{ClosedBallInOpen}
-		At any point $x$, the closed ball of size $\epsilon$ is contained within an open ball of size $\epsilon'$ if $\epsilon < \epsilon'$.
-	\end{lemma}
-
-	\begin{proof}
-		Assume that $\epsilon < \epsilon'$. Since the norm of every point in the closed ball is less than or equal to $\epsilon$ and $\epsilon < \epsilon'$, then every point in the closed ball must be in the open ball of larger size.
-	\end{proof}
-
-	Using this lemma, we show that $\bigcup_{x \in K} B(x, \epsilon_{min})$ covers $\bigcup_{x \in K} \overline{B(x, \epsilon_{min}/2)}$ (I'll call these sets $A$ and $B$ respectively.) Since any $x \in B$ is in a closed ball of radius $\epsilon/2$ centered around some point in $K$, it must be in the open ball of radius $\epsilon$ around the same point, and thus in $A$. Therefore $B \subset A$. Furthermore, since $A \subset U$, then $B \subset U$. Also $B$ bounded, since each point is only $\epsilon/2$ distance away from the furthest point in the bounded set $K$. Therefore, $B$ is a closed and bounded set, which makes it compact. Also, the interior of $B$ covers $K$. Therefore for any closed set $K$ in an open set $U$, there exists a closed set in $U$ who's interior covers $K$.
-	\item
+	\item Munkres Question 3
 	\begin{enumerate}[a)]
-		\item To prove that this function is a metric on $\mathbb{R}^n$ we must show that it satisfies the metric properties. Namely, we show that:
-		\begin{enumerate}[i.]
-			\item $ \rho(x, y) = \rho(y, x) $
-			\item $ \rho(x, y) \geq 0 $ with equality when $x = y$
-			\item $ \rho(x, z) \leq \rho(x, y) + \rho(y, z) $
-		\end{enumerate}
-		To prove i., note that since $d(x,y) = d(y,x)$ we can simply do the following:
+		\item Note the function can be written as follows
+		\[
+		 f((x,y)) =
+		  \begin{cases}
+		   \frac{x^2y^2}{x^2y^2 + (y-x)^2)} & \text{if } (x, y) \neq 0 \\
+		   0       & \text{if } (x, y) = 0
+		  \end{cases}
+		\]
+		Let $u = (h, k)$ be an arbitrary, non-zero vector. The directional derivative of $f$ at origin with respect to $u$ will then be:
 		\begin{align*}
-			\rho(x, y) & = \frac{d(x,y)}{1+d(x,y)} \\
-			& = \frac{d(y,x)}{1+d(y,x)} \\
-			& = \rho(y,x)
+			f'(0; u) & =  \lim_{t \to 0} \frac{f(0 + tu) - f(0)}{t} \\
+			& =  \lim_{t \to 0} \frac{t h^2k^2}{t^2h^2k^2 + (k - h)^2}
 		\end{align*}
-		For ii., we once again base our proof on the fact that $\rho$ is simply a function of $d$. If $x = y$ then $d(x,y) = 0$, and hence $\rho(x,y) = \frac{0}{1} = 0$. If $x \neq y$ then $d(x,y) > 0$ and so $\rho(x,y)$ must be greater than zero since it's a positive number divided by a positive number.
+		Now assuming that $(k - h)^2 \neq 0$ then $\lim_{t\to 0} t^2h^2k^2 + (k - h)^2 = (k - h)^2 \neq 0$ so the limit becomes:
+		\begin{align*}
+			& =  \lim_{t \to 0} \frac{t h^2k^2}{t^2h^2k^2 + (k - h)^2} \\
+			& =  \frac{\lim_{t \to 0} t h^2k^2}{\lim_{t \to 0} t^2h^2k^2 + (k - h)^2} \\
+			& =  0
+		\end{align*}
+		Assuming that $(k - h)^2 = 0$ then $k = h$ so the limit becomes:
+		\begin{align*}
+			& =  \lim_{t \to 0} \frac{t h^2k^2}{t^2h^2k^2 + (k - h)^2} \\
+			& =  \lim_{t \to 0} \frac{t k^4}{t^2k^4} \\
+			& =  \lim_{t \to 0} \frac{1}{t}
+		\end{align*}
+		Which does not exist. Therefore the directional derivatives only exist when $k \neq h$. 
+		\item Since $D_1 f$ and $D_2 f$ are the directional derivatives of elementary unit vectors then $k \neq h$, and thus both of these will be zero.
+		\item The function is not differentiable since some of the directional derivatives don't exist.
+		\item The function is continuous.
+	\end{enumerate}
 
-		To prove iii., note that the function $f(x) = \frac{x}{x+1}$ is monotonically increasing for all $x \geq 0$. Also note that $f(x+y) \leq f(x) + f(y)$ since if $x = y = 0$ then $f(x+y) = f(x) + f(y) = 0$. If $x \neq 0$ and $y = 0$ then $f(x+y) = f(x) = f(x) + f(y)$. If $x, y \neq 0$ then the equation $\frac{xy(x+y+2)}{(x+1)(y+1)(x+y+1)}$ is positive, so the following holds:
+	\item Munkres Question 4
+	\begin{enumerate}[a)]
+		\item Note the function is to be written as follows
+		\[
+		 f((x,y)) =
+		  \begin{cases}
+		   \frac{x^3}{x^2 + y^2} & \text{if } (x, y) \neq 0 \\
+		   0       & \text{if } (x, y) = 0
+		  \end{cases}
+		\]
+		Let $u = (h, k)$ be an arbitrary, non-zero vector. The directional derivative of $f$ at origin with respect to $u$ will then be:
 		\begin{align*}
-			f(x+y) & = \frac{x+y}{1+x+y} \\
-			& \leq \frac{x+y}{1+x+y} + \frac{xy(x+y+2)}{(x+1)(y+1)(x+y+1)} \\
-			& = \frac{x}{1+x} + \frac{y}{1+y} = f(x) + f(y)
+			f'(0; u) & =  \lim_{t \to 0} \frac{f(0 + tu) - f(0)}{t} \\
+			& =  \lim_{t \to 0} \frac{t^3 h^2}{t^2(h^2 + k^2)} \\
+			& =  \lim_{t \to 0} \frac{t h^2}{h^2 + k^2}
 		\end{align*}
-		Also $f(d(x,y)) = \rho(x,y)$.
+		Which is always zero
+		\item All directional derivatives exist, therefore $D_1 f$ and $D_2 f$ must exist.
+		\item The function is differentiable since all of the partial derivatives are continuous.
+		\item The function is continuous since it's differentiable.
+	\end{enumerate}
 
-		Since $d(x,y) \geq 0$ for any $x, y \in \mathbb{R}^n$, we can apply $f$ to both sides of the inequality $ d(x, z) \leq d(x, y) + d(y, z) $ like so:
+	\item Additional work, question 1
+	\begin{enumerate}[a)]
+		\item Note that the function $f:\mathbb{R}^2 \to \mathbb{R}$ can be rewritten like so:
+		\[
+		 f((x,y)) =
+		  \begin{cases}
+		   \frac{x|y|}{\|(x,y)\|} & \text{if } (x, y) \neq 0 \\
+		   0       & \text{if } (x, y) = 0
+		  \end{cases}
+		\]
+		Let $u = (h, k)$ be an arbitrary, non-zero vector. The directional derivative of $f$ at origin with respect to $u$ will then be:
 		\begin{align*}
-			d(x, z) & \leq d(x, y) + d(y, z) \implies \\
-			f(d(x, z)) & \leq f(d(x, y) + d(y, z)) \implies \\
-			f(d(x, z)) & \leq f(d(x, y)) + f(d(y, z)) \implies \\
-			\rho(x, z) & \leq \rho(x, y) + \rho(y, z)
+			f'(0; u) & =  \lim_{t \to 0} \frac{f(0 + tu) - f(0)}{t} \\
+			& =  \lim_{t \to 0} \frac{t h |t k|}{\|tu\|}\frac{1}{t} \\
+			& =  \lim_{t \to 0} \frac{t |t| h |k|}{t|t|\|u\|} \\
+			& =  \frac{h |k|}{\|u\|}
 		\end{align*}
-		So $\rho$ is a metric on $\mathbb{R}^n$
-		\item since $\rho(x,y) = f(d(x,y))$ and $d(x,y) \geq 0$ for all $x, y \in \mathbb{R}^2$ we simply show that $f$ is bounded for all $x \geq 0$. This is a simple task, since $f$ is a division of two positive numbers, where the denominator is larger than the numerator, $f$ must be always less than 1. Therefore, the metric $(\mathbb{R}^2, \rho)$ is bounded by 1.
-		% \item For all Cauchy series $\{x_n\}$ in the metric space $(\mathbb{R}^n, \rho)$, if $\epsilon > 0$ then there exists an $N$ where for all $n,m > N$ we have $\rho(x_n,x_m) < \epsilon$.
+		Which is defined for all $u \neq 0$. Therefore all the directional derivatives exist for $f$.
+		\item If $f$ were differentiable at the origin then $f(0; u) = ah + bk$ for some constant $a,b \in \mathbb{R}$, however there are no such constants that satisfy $ah + bk = \frac{h |k|}{\|u\|}$. Therefore $f$ is not differentiable at the origin.
+	\end{enumerate}
+
+	\item Additional work, question 2
+	\begin{enumerate}[a)]
+		\item $f(1,1) = 1^3 + 1^3 + 1 -  3 = 0$
+		\item 
 	\end{enumerate}
 
 
