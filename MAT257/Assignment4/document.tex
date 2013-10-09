@@ -155,7 +155,25 @@
 	\item Additional work, question 2
 	\begin{enumerate}[a)]
 		\item $f(1,1) = 1^3 + 1^3 + 1 -  3 = 0$
-		\item 
+		\item Assuming that $f_y(x,y)$ means $D_2 f(x,y) = f((x,y); e_2)$, then we have;
+		\begin{align*}
+			f'((x, y); e_2) & =  \lim_{t \to y} \frac{f((x, t)) - f((x,y))}{t-y} \\
+			& =  \lim_{t \to y} \frac{x + t^3 + t - 3 - x - y^3 - y + 3}{t-y} \\
+			& =  \lim_{t \to y} \frac{t^3 - y^3 + t - y}{t-y} 
+		\end{align*}
+		Application of l'Hopital's rule gives:
+		\begin{align*}
+			\lim_{t \to y} \frac{t^3 - y^3 + t - y}{t-y} & = \lim_{t \to y} \frac{3t^2 + 1}{1} \\
+			& = 3y^2 + 1
+		\end{align*}
+		Which is independent of $x$, so we only need to consider $y \in [0, 2]$. Since $D_2 f((x,y))$ is an up facing parabola with vertical shift of +1, it will be greater than or equal than one over the entire number line. Therefore $D_2 f ((x,y)) \geq 1$ for $(x,y) \in [0,2]^2$
+		\item From the above, we have that the functions $\phi(x) = f((x, 0))$ and $\phi'2(x) = f((x, 2))$ have no critical points, therefore we only need to show that $\phi(1-h),\phi(1+h) \leq -1$ and $\phi'(1-h),\phi'(1-h) \geq 1$ for some $h$. Taking $h = 1$ yields:
+		$$ \phi(0) = -3 \leq -1$$
+		$$ \phi(2) = -1 \leq -1$$
+		$$ \phi'(0) = 7 \geq 1$$
+		$$ \phi'(2) = 9 \geq 1$$
+		\begin{align*}
+		\end{align*}
 	\end{enumerate}
 
 
