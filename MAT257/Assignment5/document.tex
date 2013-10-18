@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{fullpage}
+\usepackage{graphicx}
 \usepackage{enumerate}
 \usepackage{setspace}
 \usepackage{ amssymb }
@@ -95,9 +96,15 @@
 	\item Munkres \S 2.6, Question 10
 
 	\begin{enumerate}
-		\item 
-		\item 
-		\item 
+		\item  Since the function is zero when $x$ or $y$ are zero, the partial derivatives at zero will both be zero. This is because when computing the partials we will be essentially be computing the derivative of a constant function.
+		\item Consider the following evaluated limits:
+		\begin{align*}
+		D_1 f(x, y) & = \lim_{t \to 0} \frac{1}{t} \Bigg( \frac{(x+t) y ((x+t)^2 - y^2)}{(x+t)^2 + y^2} - \frac{x y (x^2 - y^2)}{x^2 + y^2} \Bigg) \\
+		 & = y\frac{x^4 + 4x^2 y^2 - y^4}{x^4+2 x^2 y^2+y^4} \\
+		D_2 f(x, y) & = \lim_{t \to 0} \frac{1}{t} \Bigg( \frac{(y+t) x (x^2 - (y+t)^2)}{x^2 + (y+t)^2} - \frac{x y (x^2 - y^2)}{x^2 + y^2} \Bigg) \\
+		 & = x\frac{x^4 - 4x^2 y^2 - y^4}{x^4+2 x^2 y^2+y^4}
+		\end{align*}
+		\item Because the partial derivatives are a component of $\mathbb{R}^2$ multiplied by a bounded function (the polynomials of the rational functions have equal degrees) then they will be continuous for all $x \in \mathbb{R}^2$, therefore the function is of class $C_1$.
 		\item 
 	\end{enumerate}
 
@@ -105,11 +112,84 @@
 
 	From the chain rule, we have that if $f : \mathbb{R}^n \to \mathbb{R}^m$ and $g : \mathbb{R}^m \to \mathbb{R}^p$ then for some point $a \in \mathbb{R}^n$, if $f(a) = b$ then $D(g \circ f)(a) = Dg(b) \cdot Df(a)$
 
+	Given the functions and information posed by this question, $D(g \circ f)(0) = Dg((1,2)) \cdot Df(0)$ Where $Df(0)$ is the matrix:
+	\[ \left( \begin{array}{ccc}
+		1 & 2 & 3 \\
+		0 & 0 & 1 \end{array} \right)\]
+	$g$ is differentiable because it is the sum and product of differentiable functions. To find $Dg((1,2))$ we must find the partial derivatives for each component function at $(1,2)$ to get the derivative matrix. Note the definition of the component functions:
+	\begin{align*}
+		g_1((x,y)) & = x + 2y + 1 \\
+		g_2((x,y)) & = 3xy
+	\end{align*}
+	And after a bit of limit evaluation, we find the derivatives:
+	\begin{align*}
+		g_1'((1,2)) & = [\; 1 \quad 2 \;] \\
+		g_2'((1,2)) & = [\; 6 \quad 3 \;]
+	\end{align*}
+	Which makes $Dg((1,2))$ the following matrix:
+	\[ \left( \begin{array}{cc}
+		1 & 2 \\
+		6 & 3 \end{array} \right)\]
+	Multiplying $Dg((1,2))$ by $Df(0)$ yields $D(g \circ f)(0)$ which is the following:
+	\[ \left( \begin{array}{ccc}
+		1 & 2 & 5 \\
+		6 & 12 & 21 \end{array} \right)\]
+
 	\item Additional Work, Question 1
 
 	\begin{enumerate}
-		\item 
-		\item 
+		\item Graphs generated with Wolfram Mathematica 9. Z axis is vertical, while the X and Y axes are horizontal.
+		\begin{figure}[ht]
+			\begin{minipage}[b]{0.30\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/-1.jpeg}
+				\caption{$\Sigma_{-1}$}
+				\label{fig:figure1}
+			\end{minipage}
+			\hspace{0.3cm}
+			\begin{minipage}[b]{0.30\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/0.jpeg}
+				\caption{$\Sigma_0$}
+				\label{fig:figure2}
+			\end{minipage}
+			\hspace{0.3cm}
+			\begin{minipage}[b]{0.30\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/1.jpeg}
+				\caption{$\Sigma_1$}
+				\label{fig:figure2}
+			\end{minipage}
+		\end{figure}
+
+		Commands:
+		\begin{enumerate}[i.]
+			\item $\Sigma_{-1}$:
+			{\tt Show[ContourPlot3D[
+  z\verb|^|2 - x\verb|^|2 - y\verb|^|2 == -1, \{x, -2, 2\}, \{y, -2, 2\}, \{z, -2, 2\}], 
+ Lighting -> "Neutral"] }
+			\item $\Sigma_{0}$:
+			{\tt Show[ContourPlot3D[
+  z\verb|^|2 - x\verb|^|2 - y\verb|^|2 == 0, \{x, -2, 2\}, \{y, -2, 2\}, \{z, -2, 2\}], 
+ Lighting -> "Neutral"] }
+			\item $\Sigma_{1}$:
+			{\tt Show[ContourPlot3D[
+  z\verb|^|2 - x\verb|^|2 - y\verb|^|2 == 1, \{x, -2, 2\}, \{y, -2, 2\}, \{z, -2, 2\}], 
+ Lighting -> "Neutral"] }
+		\end{enumerate}
+		\item $\nabla f (x,y,z) = (-2x, -2y, 2z)$ because $\nabla f = (D_1 f)e_1 + (D_2 f)e_2 + (D_3 f)e_3$ and: 
+		\begin{align*}
+			D_1 f (x,y,z) & = -2x \\
+			D_2 f (x,y,z) & = -2y \\ 
+			D_3 f (x,y,z) & = 2z
+		\end{align*}
+		For the points $e_1, e_2, e_3$, $\nabla f$ takes the following values:
+		\begin{align*}
+			\nabla f (e_1) & = -2 e_1 \\
+			\nabla f (e_2) & = -2 e_2 \\ 
+			\nabla f (e_3) & = 2 e_3
+		\end{align*}
+		If $\nabla f(x, y, z) = (-2x, -2y, 2z) = 0$ then $(x, y, z) = 0$. The corresponding level set of this point is $\Sigma_0$. A special feature about this level set is it's the only one that contains a point that has a gradient of zero. 
 		\item 
 		\item 
 		\item 

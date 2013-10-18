@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2013.10.9)  17 OCT 2013 22:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2013.10.9)  18 OCT 2013 01:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -367,9 +367,41 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip46
 )
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count100
+))
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
+)
 (/usr/share/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
-\@enLab=\toks21
+\@enLab=\toks22
 )
 (/usr/share/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
@@ -377,75 +409,139 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 (/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-\c@theorem=\count100
- (./document.aux)
+\c@theorem=\count101
+ (./document.aux
+
+LaTeX Warning: Label `fig:figure2' multiply defined.
+
+)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 46.
-
-(/usr/share/texmf-dist/tex/latex/lm/t1lmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 47.
+ (/usr/share/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 50.
+(/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count102
+\scratchdimen=\dimen115
+\scratchbox=\box28
+\nofMPsegments=\count103
+\nofMParguments=\count104
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count105
+\MPscratchDim=\dimen116
+\MPnumerator=\count106
+\makeMPintoPDFobject=\count107
+\everyMPtoPDFconversion=\toks24
+) (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 51.
 
 (/usr/share/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 50.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 51.
 
 (/usr/share/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 50.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 51.
 
 
 (/usr/share/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 50.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 51.
 
 
 (/usr/share/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 50.
+(Font)              <12> on input line 51.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 50.
+(Font)              <8> on input line 51.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 50.
-LaTeX Font Info:    Try loading font information for U+msa on input line 50.
+(Font)              <6> on input line 51.
+LaTeX Font Info:    Try loading font information for U+msa on input line 51.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 50.
+LaTeX Font Info:    Try loading font information for U+msb on input line 51.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 54.
+(Font)              <10> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 54.
+(Font)              <7> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 54.
+(Font)              <5> on input line 55.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (10.59598pt too wide) detected at line 83
+Overfull \hbox (10.59598pt too wide) detected at line 84
 \OML/lmm/m/it/10 f[]a  \OT1/lmr/m/n/10 =[]\OMS/lmsy/m/n/10 )  8\OML/lmm/m/it/10
  ^^N > \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OMS/lmsy/m/n/10 8\OML/lmm/m/it/10 ^^
 O > \OT1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OMS/lmsy/m/n/10 9\OML/lmm/m/it/10 j \OM
@@ -457,30 +553,64 @@ j\OML/lmm/m/it/10 D[]f\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 m\OT1/lmr/m/n/10 )\OMS/
 lmsy/m/n/10 j ^^U \OML/lmm/m/it/10 ^^O
  []
 
-[2] (./document.aux) ) 
+[2] <images/-1.jpeg, id=21, 361.35pt x 416.55624pt>
+File: images/-1.jpeg Graphic file (type jpg)
+ <use images/-1.jpeg>
+Package pdftex.def Info: images/-1.jpeg used on input line 145.
+(pdftex.def)             Requested size: 140.92793pt x 162.45627pt.
+
+<images/0.jpeg, id=22, 361.35pt x 416.55624pt>
+File: images/0.jpeg Graphic file (type jpg)
+ <use images/0.jpeg>
+Package pdftex.def Info: images/0.jpeg used on input line 152.
+(pdftex.def)             Requested size: 140.92793pt x 162.45627pt.
+
+<images/1.jpeg, id=23, 361.35pt x 416.55624pt>
+File: images/1.jpeg Graphic file (type jpg)
+ <use images/1.jpeg>
+Package pdftex.def Info: images/1.jpeg used on input line 159.
+(pdftex.def)             Requested size: 140.92793pt x 162.45627pt.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 168.
+
+
+(/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Overfull \hbox (8.97978pt too wide) in paragraph at lines 167--171
+[]$\OT1/lmr/m/n/10 ^^F[]$\T1/lmr/m/n/10 : \T1/lmtt/m/n/10 Show[ContourPlot3D[ z
+[]^2 - x[]^2 - y[]^2 == -1, {x, -2, 2}, {y, -2, 2}, {z, -2,
+ []
+
+[3 <./images/-1.jpeg> <./images/0.jpeg> <./images/1.jpeg>] [4] (./document.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2143 strings out of 493311
- 24415 string characters out of 6143650
- 82229 words of memory out of 5000000
- 5563 multiletter control sequences out of 15000+600000
- 43671 words of font info for 51 fonts, out of 8000000 for 9000
+ 3449 strings out of 493311
+ 43578 string characters out of 6143650
+ 109612 words of memory out of 5000000
+ 6797 multiletter control sequences out of 15000+600000
+ 43990 words of font info for 52 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 27i,6n,24p,360b,203s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr
-/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-dist/fonts
-/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
-}</usr/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf-dist
-/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/lm/l
-mr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/tex
-mf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/lm/lmr5.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/shar
-e/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type
-1/public/lm/lmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbol
-s/msbm10.pfb>
-Output written on document.pdf (2 pages, 151844 bytes).
+ 37i,12n,24p,360b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fo
+nts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.
+enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-d
+ist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf-dist/fonts/type1/public/
+lm/lmex10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf-dist/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></
+usr/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fon
+ts/type1/public/lm/lmr5.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr7.p
+fb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-di
+st/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/lm
+/lmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
+fb>
+Output written on document.pdf (4 pages, 307687 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
