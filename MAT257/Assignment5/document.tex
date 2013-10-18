@@ -189,8 +189,17 @@
 			\nabla f (e_2) & = -2 e_2 \\ 
 			\nabla f (e_3) & = 2 e_3
 		\end{align*}
-		If $\nabla f(x, y, z) = (-2x, -2y, 2z) = 0$ then $(x, y, z) = 0$. The corresponding level set of this point is $\Sigma_0$. A special feature about this level set is it's the only one that contains a point that has a gradient of zero. 
-		\item 
+		If $\nabla f(x, y, z) = (-2x, -2y, 2z) = 0$ then $(x, y, z) = 0$. The corresponding level set of this point is $\Sigma_0$. A special feature about this level set is it's the only one that contains a point that has a gradient of zero.
+		Additionally, if $(x, y, z) \in \Sigma_0$ then $z = \sqrt{x^2 + y^2}$ which implies that all points in $\Sigma_0$ are equally close to the z-axis as they are to the plane $z = 0$.
+		\item The directional derivative of $f$ at $a$ in the direction of $u = (a,b,c)$ where $\| u \| = 1$ is as follows:
+		\begin{align*}
+			f'(a;u) & = \lim_{t \to 0} \frac{f(a+tu) - f(a)}{t} \\
+			 & = \lim_{t \to 0} \frac{(1+tc)^2 - t^2a^2 - t^2b^2 - 1}{t} \\
+			 & = \lim_{t \to 0} t(-a^2 - b^2 + c^2) + 2c \\
+			 & = 2c
+		\end{align*}
+		Since $c$ will be bounded between $-1$ and $1$, the direction that yields a maximum directional derivative will be the one where $c = 1$ which will be $(0, 0, 1)$. Notice that $f'(a;(0,0,1)) = \nabla f(a)$. It seems to suggest that the gradient at $a$ is equal to the maximum directional derivative obtainable using unit length directions.
+		%%%% INSERT PROOF HERE %%%%
 		\item 
 		\item 
 		\item 
