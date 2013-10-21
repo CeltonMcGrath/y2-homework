@@ -80,17 +80,62 @@
 		If we let $y_1 = h(x_2)$, since $h(x_2) \in \{0,\dots,m-1 \}$ we have:
 		$$ \text{Prob}_{h\in\mathcal{H}}[h(x_1) = h(x_2)] = \frac{1}{m} $$
 		Which implies that a 3-universal family is universal.
-		\item 
+		% \item Because $m$ is prime, the function $h_{a,b,c}$ is a polynomial in a finite field. For any $h_{a,b,c} \in \mathcal{H}$ then given $x \in U$ for any $y \in U$ if $h_{a,b,c}(x) = y$ then $a x^2 + b x + r \mod m = 0$ where $r = c - y \mod m$.
 	\end{enumerate}
 	\clearpage
 
 	\item
+	\begin{enumerate}[a)]
+		\item At each node we store the number of nodes and the average of the subtree rooted at that node.
+
+		\item While we're inserting the item we traverse down the tree to find a spot to put the new node. At every node we pass, we add one to the subtree total and recompute the average with the formula $(a + nc)/(n+1)$ where $a$ is the value we're inserting, $c$ was the original average and $n$ was the original number of nodes in the subtree. During rotations involved nodes recompute their subtree averages with similar formulas. The amount of nodes that need recomputing is constant, since it only happens when a node's children move out of their subtree. For any rotation the number of nodes that have this happen is at most 2. This means the running time is unaffected.
+
+		\item
+	\end{enumerate}
 	\clearpage
 
 	\item
+
+	\begin{enumerate}[a)]
+		\item Since each insert increases the size of the list by 1, we must find the expected number of prepends after $k-1$ operations. Using the indicator random variable $I_{n}$ associated with the event that the $n$th operation was a prepend. If $I$ is the random variable for the number of prepends after $k-1$ operations then we have:
+		\begin{align*}
+			I & = \sum^{k-1}_{n=1} I_n \implies \\
+			\text{E}\big[I\big] & = \text{E}\Bigg[ \sum^{k-1}_{n=1} I_n \Bigg] \implies \\
+			\text{E}\big[I\big] & = \sum^{k-1}_{n=1} \text{E}\big[ I_n \big] \implies \\
+			\text{E}\big[I\big] & = \sum^{k-1}_{n=1} p \implies \\
+			\text{E}\big[I\big] & =  (k-1)p
+		\end{align*}
+		By way of the linearity of expectation an the equality $\text{E}[I\{A\}] = \text{Pr}\{A\}$.
+		The expected length of the list after $k-1$ operations is $(k-1)p$.
+		\item At this point the expected size of the list is $(k-1)p$. Assuming that the $k$th operation is an access, the number of expected number of steps would be:
+		\begin{align*}
+			\text{E}\big[I\big] & = \sum^{|S|}_{n=1} \frac{1}{|S|} n \implies \\
+			\text{E}\big[I\big] & = \sum^{(k-1)p}_{n=1} \frac{n}{(k-1)p} \implies \\
+			\text{E}\big[I\big] & = \frac{1}{2} ((k-1)p + 1)
+		\end{align*}
+		Where $I$ is the random variable for the number of steps given the $k$th operation is an access.
+
+		If the $k$th operation is a prepend then the number of steps is 1. Let $A$ be the event that the operation is a prepend and $B$ be the event that the operation is an access. If $J_k$ is the random variable for the number of steps at the $k$th operation we have: 
+		\begin{align*}
+			\text{E}\big[J_k\big] & = \text{Pr}(A) + \text{Pr}(B)\frac{1}{2} ((k-1)p + 1)  \implies \\
+			\text{E}\big[J_k\big] & = p + (1-p)\frac{1}{2} ((k-1)p + 1)  \implies \\
+			\text{E}\big[J_k\big] & = \frac{1}{2} (-k p^2+k p+p^2+1) 
+		\end{align*}
+		So the expected number of steps is $\frac{1}{2} (-k p^2+k p+p^2+1) $
+		\item If $J$ is the random variable for the number of steps for the entire series of operations, then we have:
+		\begin{align*}
+			J & = \sum^{n}_{k=1} J_k \implies \\
+			\text{E}\big[J\big] & = \text{E}\Bigg[ \sum^{n}_{k=1} J_k \Bigg] \implies \\
+			\text{E}\big[J\big] & = \sum^{n}_{k=1} \text{E}\big[ J_k \big] \implies \\
+			\text{E}\big[J\big] & = \sum^{n}_{k=1} \frac{1}{2} (-k p^2+k p+p^2+1)  \implies \\
+			\text{E}\big[J\big] & = \frac{1}{4} n (2+p+n p+p^2-n p^2)
+		\end{align*}
+		So $n$ operations is expected to take $\frac{1}{4} n (2+p+n p+p^2-n p^2)$ steps.
+	\end{enumerate}
 	\clearpage
 
 	\item
+
 	\clearpage
 	\item 
 		For a list of lists with these restrictions, the number of lists and the maximum size of the largest list will be:
@@ -167,13 +212,55 @@
 		This algorithm does at most $\sqrt{n}$ iterations of it's while loop. Only two iterations of this loop will take more than constant time. These iterations take $O(\sqrt{n})$ time. This means the algorithm takes $O(3 \sqrt{n}) = O(\sqrt{n})$ time.
 
 		\item Searching can be done by doing a binary search over each group's max and min. If the search key ``falls between the cracks'' of two groups (i.e.\ for two successive groups $g_1$ and $g_2$ we find $g_1.\max < x < g_2.\min$) then it does not exist in the data structure. If $x \in [g.\min, g.\max]$ for some $g \in S$ then we do a binary search over the elements of $g$, keeping in mind that it's rotated by a set amount.
+
+		Let $g.\text{offset}$ be the group $g$'s rotation amount.
 		\begin{algorithmic}
 		\Function{SEARCH}{$S$, $x$}
-			\State $intervalmin \gets 1$
-			\State $intervalmax \gets 2|S|$
+			\State $intervalmin \gets 0$
+			\State $intervalmax \gets 2|S|-1$
 			\While{$intervalmin < intervalmax$}
-				\State $midpoint$
+				\State $midpoint \gets \floor{(intervalmin + intervalmax)/2}$
+				\State $smid \gets \floor{midpoint/2}$
+				\State $smidval \gets S[smid+1].\max $
+				\If{$midpoint \mod 2 = 0$}
+					\State $smidval \gets S[smid+1].\min $
+				\EndIf
+				\If{$x > smidval$}
+					\State $intervalmin \gets midpoint+1$
+				\Else
+					\State $intervalmax \gets midpoint$
+				\EndIf
 			\EndWhile
+			\If{$intervalmin \neq intervalmax$}
+				\State \Return No Key
+			\EndIf
+
+			\State $r \gets intervalmin$
+			\If{$r \mod 2 == 0$}
+				\State \Return No Key
+			\EndIf
+			\State $r \gets \floor{r/2}$
+			\State $g \gets S[r]$
+
+
+			\State $intervalmin \gets 0$
+			\State $intervalmax \gets |g|-1$
+			\While{$intervalmin < intervalmax$}
+				\State $midpoint \gets \floor{(intervalmin + intervalmax)/2}$
+				\State $gmidval \gets g[((midpoint+g.\text{offset}) \mod |g|) + 1] $
+
+				\If{$x > gmidval$}
+					\State $intervalmin \gets midpoint+1$
+				\Else
+					\State $intervalmax \gets midpoint$
+				\EndIf
+			\EndWhile
+			\If{$intervalmin = intervalmax$ and $ $}
+
+				\Return $x$'s data/position
+			\EndIf
+
+			\State \Return No Key
 		\EndFunction
 		\end{algorithmic}
 

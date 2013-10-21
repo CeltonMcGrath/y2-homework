@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2013.10.9)  21 OCT 2013 02:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2013.10.9)  21 OCT 2013 05:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -610,49 +610,50 @@ x[]; x[] \OMS/lmsy/m/n/10 2
 
 ] [4
 
-] [5
+] [5] [6
 
-] [6
+] [7
 
 ]
-Overfull \hbox (2.57068pt too wide) in paragraph at lines 142--143
+Overfull \hbox (2.57068pt too wide) in paragraph at lines 187--188
 [] \T1/lmr/m/n/10 Re-move $\OML/lmm/m/it/10 x$ \T1/lmr/m/n/10 from $\OML/lmm/m/
 it/10 S\OT1/lmr/m/n/10 [\OMS/lmsy/m/n/10 j\OML/lmm/m/it/10 S\OMS/lmsy/m/n/10 j\
 OT1/lmr/m/n/10 ]$ \T1/lmr/m/n/10 and shift ev-ery-thing back-ward one space. 
  []
 
-[7]
-Overfull \hbox (3.60895pt too wide) in paragraph at lines 180--181
+[8] [9]
+Overfull \hbox (3.60895pt too wide) in paragraph at lines 267--268
 \T1/lmr/m/n/10 group, this al-go-rithm takes $\OML/lmm/m/it/10 O\OT1/lmr/m/n/10
  ([]([])) + \OML/lmm/m/it/10 O\OT1/lmr/m/n/10 ([]([])) = \OML/lmm/m/it/10 O\OT1
 /lmr/m/n/10 (1\OML/lmm/m/it/10 =\OT1/lmr/m/n/10 2 [](\OML/lmm/m/it/10 n\OT1/lmr
 /m/n/10 )) =
  []
 
-[8] (./document.aux) ) 
+[10] (./document.aux) ) 
 Here is how much of TeX's memory you used:
- 4586 strings out of 493311
- 60793 string characters out of 6143650
- 131811 words of memory out of 5000000
- 7921 multiletter control sequences out of 15000+600000
+ 4587 strings out of 493311
+ 60805 string characters out of 6143650
+ 132811 words of memory out of 5000000
+ 7922 multiletter control sequences out of 15000+600000
  49461 words of font info for 53 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 51i,11n,43p,457b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr
-/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts
-/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
-}</usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist
-/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/lm
-/lmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/share/
-texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/p
-ublic/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr
-/share/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy7.pf
-b>
-Output written on document.pdf (8 pages, 178092 bytes).
+ 51i,12n,43p,695b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/us
+r/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/font
+s/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathi
+t.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dis
+t/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm
+/lmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/shar
+e/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf-dist/fonts/type
+1/public/lm/lmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></
+usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr7.
+pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-d
+ist/fonts/type1/public/lm/lmsy7.pfb>
+Output written on document.pdf (10 pages, 190647 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 88 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
