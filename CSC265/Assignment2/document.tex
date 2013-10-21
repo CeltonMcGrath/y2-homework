@@ -61,7 +61,6 @@
 \begin{enumerate}
 	\item 
 
-	\clearpage
 	\item 
 	\begin{enumerate}[a)]
 		\item Note that for any $h \in \mathcal{H}$ for all distinct $x_1,x_2,x_3 \in U$ and all $y_1,y_2,y_3 \in \{0,\dots,m-1\}$ we have that:
@@ -136,6 +135,19 @@
 
 	\item
 
+	\begin{enumerate}[a)]
+		\item 
+		\begin{enumerate}[i.]
+			\item Because the black height property implies that the tree has a sense of symmetry, the black hight can only change if a rotation occurs at the root node. In these cases, since the number of nodes affected by the rotation is minimal, recalculating the black height shouldn't be to difficult. If we only compute black height when it's possible to do it once in constant time (or at the same time another constant time operation would be running), then the running time of the insert and delete algorithms will not change.
+
+			While descending down T we can keep track of the black height by subtracting one from the black-height for every back node we traverse away from. 
+			\item We can simply traverse as far to the right as possible until we reach the black height of $bh[T_2]$. We keep track of the black height using the method mentioned in i.
+			\item We let $x$ be the root of the new subtree and have $T_y$ and $T_2$ hang off the left and right of $x$. Since $key[x_1] \leq key[x_2]$ for any $x_1 \in T_y$ and $x_2 \in T_2$ the subtree will maintain the binary search tree property.
+			\item If we let $x$ be a red node then we if $x$'s parent is red we do the bubble up recoloring procedure to keep the red-black property of the tree maintained. This will take $\log n$ time.
+			\item When this is the case we just swap $T_1$ and $T_2$.
+			\item Since the worst operation we have to preform is the recoloring which takes $O(\log n)$ time, the algorithm has a running time of $O(\log n)$
+		\end{enumerate}
+	\end{enumerate}
 	\clearpage
 	\item 
 		For a list of lists with these restrictions, the number of lists and the maximum size of the largest list will be:

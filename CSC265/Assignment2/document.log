@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2013.10.9)  21 OCT 2013 05:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2013.10.9)  21 OCT 2013 06:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -588,48 +588,46 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 60.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 66.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 66.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 66.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 67.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 67.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 67.
-
-Overfull \hbox (4.23602pt too wide) in paragraph at lines 73--75
+Overfull \hbox (4.23602pt too wide) in paragraph at lines 72--74
 \T1/lmr/m/n/10 Solv-ing for each prob-a-bil-ity yields $\OT1/lmr/m/n/10 1\OML/l
 mm/m/it/10 =m$\T1/lmr/m/n/10 . So for for all dis-tinct $\OML/lmm/m/it/10 x[]; 
 x[]; x[] \OMS/lmsy/m/n/10 2
  []
 
-[2
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ] [3
 
-] [4
+] [4] [5
 
-] [5] [6
-
-] [7
+] [6
 
 ]
-Overfull \hbox (2.57068pt too wide) in paragraph at lines 187--188
+Overfull \hbox (2.57068pt too wide) in paragraph at lines 199--200
 [] \T1/lmr/m/n/10 Re-move $\OML/lmm/m/it/10 x$ \T1/lmr/m/n/10 from $\OML/lmm/m/
 it/10 S\OT1/lmr/m/n/10 [\OMS/lmsy/m/n/10 j\OML/lmm/m/it/10 S\OMS/lmsy/m/n/10 j\
 OT1/lmr/m/n/10 ]$ \T1/lmr/m/n/10 and shift ev-ery-thing back-ward one space. 
  []
 
-[8] [9]
-Overfull \hbox (3.60895pt too wide) in paragraph at lines 267--268
+[7] [8]
+Overfull \hbox (3.60895pt too wide) in paragraph at lines 279--280
 \T1/lmr/m/n/10 group, this al-go-rithm takes $\OML/lmm/m/it/10 O\OT1/lmr/m/n/10
  ([]([])) + \OML/lmm/m/it/10 O\OT1/lmr/m/n/10 ([]([])) = \OML/lmm/m/it/10 O\OT1
 /lmr/m/n/10 (1\OML/lmm/m/it/10 =\OT1/lmr/m/n/10 2 [](\OML/lmm/m/it/10 n\OT1/lmr
 /m/n/10 )) =
  []
 
-[10] (./document.aux) ) 
+[9] (./document.aux) ) 
 Here is how much of TeX's memory you used:
  4587 strings out of 493311
  60805 string characters out of 6143650
@@ -638,22 +636,22 @@ Here is how much of TeX's memory you used:
  49461 words of font info for 53 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  51i,12n,43p,695b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/us
-r/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/font
-s/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathi
-t.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dis
-t/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm
-/lmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/shar
-e/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf-dist/fonts/type
-1/public/lm/lmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></
-usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr7.
-pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-d
-ist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on document.pdf (10 pages, 190647 bytes).
+{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr
+/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dist/fonts
+/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit
+.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dist
+/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/
+lmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/share
+/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf-dist/fonts/type1
+/public/lm/lmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></u
+sr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/font
+s/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr7.p
+fb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-di
+st/fonts/type1/public/lm/lmsy7.pfb>
+Output written on document.pdf (9 pages, 193089 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 85 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
