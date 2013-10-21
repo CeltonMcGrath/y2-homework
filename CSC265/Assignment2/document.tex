@@ -11,9 +11,10 @@
 \usepackage{ amssymb }
 \usepackage{mathtools}
 \usepackage{fancyhdr}
+\usepackage{algpseudocode}
 \pagestyle{fancy}
 
-\lhead{Assignment 1 - CSC265}
+\lhead{Assignment 2 - CSC265}
 \rhead{David Knott, \#999817685}
 
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -53,68 +54,152 @@
 \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
 \addtolength{\belowdisplayskip}{-25mm}
 \begin{document}
-\title{Assignment 1 - CSC265}
+\title{Assignment 2 - CSC265}
 \author{David Knott \\  Student \#999817685}
-\date{September 30, 2013}
+\date{October 21, 2013}
 \maketitle
 \begin{enumerate}
 	\item 
-	% To begin I define a few functions to help with the proofs. If $P$ is a pennant forest of length $m$, then the function $L(P, i)$ where $i \in [0, m]$ is the size of the set $\{ p \in P \ \big|\  \mathrm{height}(p) \in [0, i] \}$. From the 3rd and 4th properties $L(P, i) \in [i+1, i+2]$.
-	\begin{enumerate}[a)]
-		\item
-		\item Note that a heap of height $n$ contains at most $2^n - 1$ nodes and at least $2^{n-1}$ nodes. If the heap contains the maximum amount of nodes, or is ``complete'', then it's easy to turn into a pennant. If we take the root node drop it's left subtree we get a pennant of height $n$ (the root node + it's right subtree) and a heap of height $n-1$ (the root's left subtree). Since the left subtree is a complete heap, we can simply repeat this process to obtain a pennant forest with $n$ pennants, where pennant $p_n$ is of height $n$. This process only takes $\log(n)$ time, since the most we're doing is traversing down the left side of the tree and copying pointers as we go.
 
-		For an incomplete heap we use a recursive algorithm that, given a node in the heap, outputs a pennant forest made of the heap of height $n$ rooted at the input node. Note that for any node in a heap only one of the four conditions appy:
-		\begin{enumerate}[i.]
-			\item The node is the root of a complete heap.
-			\item The node's left and right subtrees are complete heaps, but the left subtree is higher than the right by one level.
-			\item The node's right subtree is a complete heap, but the left subtree is higher than the right by one level and is incomplete.
-			\item The node's left subtree is a complete heap, but the right subtree is incomplete. The two subtrees have the same height.
-		\end{enumerate}
-		So for any node in the tree, our algorithm will do one the following for each of the conditions described above:
-		\begin{enumerate}[i.]
-			\item The function simply turns the node and it's children into a pennant forest using the process described in the first paragraph.
-			\item The function calls itself on the left subtree, yielding the pennant forest $P$. Since $P$'s largest pennant is of size $n-2$ and has only one pennant per height, the function appends the pennant made from the input node and the right subtree, which will be of height $n-2$. The function then returns this forest after ordering the last two pennants.
-			\item The function does the same as above. The largest pennant in the forest returned is less than or equal to $n-2$, and there is strictly one or less pennants of size $n-2$. This means the function can append the pennant made out of the input node and it's right subtree while still maintaining the pennant forest property.
-			\item The function calls itself on the right subtree, which will yield a pennant forest who's maximum pennant is at most height $n-2$. The function adds the pennant made from the input node and it's left child, which will be of height $n-1$.
-		\end{enumerate}
-		This function also runs in $\log(n)$ time, since for each level of the tree the function is called at most once, since the function calls itself on only one subtree.
-		\item
-		\item Take the root of the pennant ($a$) and the root of the pennant's binary tree ($b$) as the roots of two new pennants. Take off the left subtree of $b$ and attach it to $a$. Since $a \geq b \geq $ any child of $b$, the two pennants will satisfy the priority property. Since we only do a constant amount of pointer swapping, this algorithm takes constant time. 
-		\item Suppose these two pennants are called $X$ and $Y$. The root of $X$ will be called $a$ and the child of $a$ will be called $b$. The root of $Y$ will be called $c$ and the child of $c$ will be called $d$. Assume that $a \geq c$ (if this isn't true simply swap X with Y). There are three possibilities:
-		\begin{enumerate}[i.]
-			\item $a \geq b \geq c \geq d$
-			\item $a \geq c \geq b \geq d$
-			\item $a \geq c \geq d \geq b$
-		\end{enumerate}
-		And for any of these conditions, the algorithm will behave as such:
-		\begin{enumerate}[i.]
-			\item The new pendant will take $a$ as it's root and $b$ as it's child. The right subtree of $b$ will be the one rooted at $d$. The left subtree will be the one rooted at $b$, but with it's root replaced with $c$. In $\log(n)$ time, $c$ will bubble down the heap it has become the root of. This will yield a pennant of size $n$ in logarithmic time.
-			\item The new pendant will take $a$ as it's root and $c$ as it's child. The right subtree of $c$ will be the one rooted at $d$. The left subtree will be the one rooted at $b$. This will produce a pennant of size $n$ in constant time.
-			\item Works the same as above.
-		\end{enumerate}
-		The worst case running time of this algorithm is logarithmic in the height of the input pennants.
-		\item
-	\end{enumerate}
 	\clearpage
 	\item 
 	\begin{enumerate}[a)]
-		\item A $d$-ary heap would be represented in an array much in the same way a binary heap is, only instead of $2^l$ array entries for the level $l$, one would need $d^l$ entries. When it comes to traversal, the node at array entry $n$'s $r$th child would be referenced with the function $dn + r$, where $r$ is in the range $[1, d]$. Traversing to the parent node from $n$ is done with the formula $\floor{n/d}$.
-		\item A $d$-ary heap with $n$ elements has a height of $\ceil{\log_d(n)}$
-		\item Just like in a binary heap, ExtractMax removes and returns the root node of the heap, replacing it with the last element in the last layer. This new element then bubbles down the heap by recursively comparing itself with it's children then swapping itself with the maximum element that's greater than it (if there's no such element then the algorithm ends.) Because this bubbling takes time proportional to the height of the tree and at each level must do $d$ comparisons (finding the maximum child takes $d-1$ comparisons, and comparing the max with the current parent takes $1$ comparison), the amount of comparisons done in the worst case will be about $d \ceil{\log_d(n)}$, which is in $O(\log n)$ time.
-		\item Insert will put the element in the next available spot on the heap, then bubble it up recursively. The rules for this bubble up procedure are: if the parent is smaller than the inserted element their positions are swapped and the algorithm continues, if the parent is larger then the heap property has been restored and the algorithm ends. The worst case in this scenario would be the inserted element has the largest value out of any of the elements in the heap, so we must preform $\ceil{\log_d(n)}$ swaps with 1 comparison per swap. Hence this algorithm runs in $O(\log n)$ time.
-		\item IncreaseKey works much the same as the above algorithm. We simply change the element's value and bubble it up through the heap, taking at most $\ceil{\log_d(n)}$ comparisons, making it in $O(\log n)$ time.
+		\item Note that for any $h \in \mathcal{H}$ for all distinct $x_1,x_2,x_3 \in U$ and all $y_1,y_2,y_3 \in \{0,\dots,m-1\}$ we have that:
+		\begin{align*}
+		\text{Prob}_{h\in\mathcal{H}}[ h(x_1) = y_1 \wedge h(x_2) = y_2 \wedge h(x_3) = y_3 ] & = \\
+		\text{Prob}_{h\in\mathcal{H}}[h(x_1) = y_1] & \times \\
+		\text{Prob}_{h\in\mathcal{H}}[h(x_2) = y_2] & \times \\
+		\text{Prob}_{h\in\mathcal{H}}[h(x_3) = y_3] & = \frac{1}{m^3}
+		\end{align*}
+		Since the $x$s are arbitrary, all of these probabilities must be the same. Solving for each probability yields $1/m$. So for for all distinct $x_1,x_2,x_3 \in U$ and all $y_1,y_2,y_3 \in \{0,\dots,m-1\}$ we have that 
+		\begin{align*}
+		\text{Prob}_{h\in\mathcal{H}}[h(x_1) = y_1] & = \frac{1}{m} \\
+		\text{Prob}_{h\in\mathcal{H}}[h(x_2) = y_2] & = \frac{1}{m} \\
+		\text{Prob}_{h\in\mathcal{H}}[h(x_3) = y_3] & = \frac{1}{m}
+		\end{align*}
+		If we let $y_1 = h(x_2)$, since $h(x_2) \in \{0,\dots,m-1 \}$ we have:
+		$$ \text{Prob}_{h\in\mathcal{H}}[h(x_1) = h(x_2)] = \frac{1}{m} $$
+		Which implies that a 3-universal family is universal.
+		\item 
 	\end{enumerate}
 	\clearpage
+
+	\item
+	\clearpage
+
+	\item
+	\clearpage
+
+	\item
+	\clearpage
 	\item 
+		For a list of lists with these restrictions, the number of lists and the maximum size of the largest list will be:
+		$$ \ceil{ \frac{1}{2} (\sqrt{8n + 1} - 1)} \in O(\sqrt{n}) $$
+		In addition to this data structure, each group will keep track of how ``rotated'' their list is. This way we can find the maximum and minimum elements of an array in constant time. Keeping this information updated will not add anything to the runtime of any of the algorithms. For convenience, if $g$ is a subgroup of $S$, then $g.\max$ and $g.\min$ will yield the maximum and minimum elements.
+
 	\begin{enumerate}[a)]
-		\item For this problem we convert each list into a binomial min-heap. This is easy since we know the length of each list and hence the structure of it's corresponding binomial heap. This is because $n/k = \sum_k^{\ceil{log_2 n/k}} x_k 2^k$ for some bit vector $x$ (the binary representation of $n/k$) and the set $S = \{ k \in \mathbb{N} \ \big|\ x_k = 1 \}$ is the sizes of the binomial trees we must use in the heap. So to construct the heap from a list $L$ of size $n/k$ we simply iterate over $k \in S$, popping $2^k$ elements from the list to produce a binomial tree of height $k$.
+		\item For insertion, for each step in the algorithm we maintain the property that the $k^{th}$ group has at most $k$ elements. This means every time we insert an element into a full group we must take one out. Taking advantage of this fact, consider the following sub algorithm:
 
-		Once we do this for all input lists, we have a series of binomial heaps $B_1,\dots,B_k$. This takes $c \frac{n}{k}k = cn$ operations, where $c$ is the constant satisfying $c\frac{n}{k} = f(\frac{n}{k})$ where $f(x)$ is the amount of operations it takes to binomialize a sorted list of length $x$. Merging two binomial heaps takes $O(\log(n))$ time, where $n$ is the number of nodes in the largest heap.
+		\begin{algorithmic}
+		\Function{INSERT-INTO-GROUP}{$g$, $x$}
+			\If{$x \geq g.\max$}
+				\State \Return $x$
+			\EndIf
 
-		To merge all these heaps together, we do a tournament style system where we merge every odd numbered heap to the even numbered heap next to it. We repeat this around $\log(k)$ times to yield one binomial heap with $n$ nodes. We then call ExtractMin on this heap $n$ times to produce the sorted list.
+			\State $r \gets g.\max$
+			\State Put $x$ where $g.\max$ was.
+			\State Subtract one to the group's rotation amount.
+			\State Bubble $x$ up the list until it reaches equilibrium.
+			\State \Return $r$
+
+		\EndFunction
+		\end{algorithmic}
+		Since all the elements of a group are smaller than any of the elements in it's successor, the return value of this algorithm will be the minimum of the next group if we inserted it there. This is precisely how the algorithm will work: 
+		\begin{algorithmic}
+		\Function{INSERT}{$S$, $x$}
+			\State $i \gets 1$
+			\State $r \gets x$
+			\While{$i < |S|$}
+				\State $r \gets \text{INSERT-INTO-GROUP}(S[i], r)$
+			\EndWhile
+
+			\If{$S[|S|]$ is full}
+				\State $S[|S|+1] \gets [r]$
+			\Else
+				\State Put $r$ at the end of $S[|S|]$ and bubble until equilibrium.
+			\EndIf
+		\EndFunction
+		\end{algorithmic}
+		The subfunction INSERT-INTO-GROUP has two behaviors: the first will return $x$ without affecting $g$, the second will return the maximum value of $g$, having inserted $x$ into $g$ by preforming at most $|g|$ shifting operations. If $x$ was already the minimum of $g$ then there would be only a constant amount of shifting.
+
+		Through the execution of the algorithm, once calls to INSERT-INTO-GROUP start exhibiting the second behavior, they will continue to do so for the rest of the algorithm. This is because the max of one group is the min of the next. Additionally, INSERT-INTO-GROUP will take $O(|g|)$ time once, and $O(1)$ time anytime else. Since INSERT INTO GROUP is called $\sqrt{n}$ times, this means INSERT will take $O(\sqrt{n})$ time.
+
+		\item For deletions we assume that the input $x$ is the position in the list of all lists where the element we're removing is. The algorithm is constructed as such:
+
+		\begin{algorithmic}
+		\Function{DELETE}{$S$, $x$}
+			\If{$x \in S[|S|]$}
+				\State Remove $x$ from $S[|S|]$ and shift everything backward one space.
+				\State Subtract one from the rotation amount if $x$ was a minimum.
+				\State \Return
+			\Else
+				\State $r \gets S[|S|].\min$
+				\State Remove the minimum from $S[|S|]$, shift everything backward.
+				\State $i \gets |S|-1$
+				\While{$i > 0$}
+					\If{$x \in S[i]$}
+						\State Replace $x$ with $r$.
+						\State Bubble $r$ it until it reaches it's place.
+						\State Change the rotation amount of $S[i]$ accordingly.
+						\State \Return
+					\Else
+						\State $m \gets r$
+						\State $r \gets S[i].\min$
+						\State Replace $S[i].\min$ with $m$.
+						\State Subtract one from $S[i]$'s rotation amount.
+					\EndIf
+				\EndWhile
+			\EndIf
+		\EndFunction
+		\end{algorithmic}
+		What the algorithm essentially does is remove the element at position $x$ and replace it with the next group's minimum, doing necessary shifting to keep the current group sorted. It then recurses to the next group and replaces it's missing space with the next group's minimum. This takes constant time. It continues to do this until it reaches the bottom. The pseudo code actually does all of this in reverse, but explaining is better this way.
+
+		This algorithm does at most $\sqrt{n}$ iterations of it's while loop. Only two iterations of this loop will take more than constant time. These iterations take $O(\sqrt{n})$ time. This means the algorithm takes $O(3 \sqrt{n}) = O(\sqrt{n})$ time.
+
+		\item Searching can be done by doing a binary search over each group's max and min. If the search key ``falls between the cracks'' of two groups (i.e.\ for two successive groups $g_1$ and $g_2$ we find $g_1.\max < x < g_2.\min$) then it does not exist in the data structure. If $x \in [g.\min, g.\max]$ for some $g \in S$ then we do a binary search over the elements of $g$, keeping in mind that it's rotated by a set amount.
+		\begin{algorithmic}
+		\Function{SEARCH}{$S$, $x$}
+			\State $intervalmin \gets 1$
+			\State $intervalmax \gets 2|S|$
+			\While{$intervalmin < intervalmax$}
+				\State $midpoint$
+			\EndWhile
+		\EndFunction
+		\end{algorithmic}
+
+		Since there are at most $\sqrt{n}$ groups and at most $\sqrt{n}$ elements in each group, this algorithm takes $O(\log(\sqrt{n}))+O(\log(\sqrt{n})) = O(1/2 \log(n)) = O(\log(n))$ time.
+
+		\item Implementing this structure as a dictionary is as simple as making each element of each array a pointer to a key-value pair. In comparison to other data structures, consider the following table:
+
+		\begin{tabular}{|l|c|c|c|c|}
+		  \hline
+		   & Unsorted Ary & Sorted Ary & Red-Black & Rotated Lists \\
+		  \hline \hline
+		  Insert & $O(1)$ & $O(n)$ & $O(\log(n))$ & $O(\sqrt{n})$ \\
+		  \hline
+		  Delete & $O(1)$ & $O(n)$ & $O(\log(n))$ & $O(\sqrt{n})$ \\
+		  \hline
+		  Search & $O(n)$ & $O(\log(n))$ & $O(\log(n))$ & $O(\log(n))$ \\
+		  \hline
+		\end{tabular}
+
+		Running time for search trumps all of these algorithms. However, insert and delete, although faster than the sorted array, is slower than Red-Black trees. This structure would be a good fit for situations where insertions and deletions are less common than searches.
+
+		It would also be good for large datasets, because in practice the algorithm searches over a sorted list of size $\sqrt{n}$ and then a sorted list of size $n \leq \sqrt{n}$. If keys are ranked in such a way that lower values are searched more often, then $n$ would be small, and the amount of comparisons would be closer to $\log(\sqrt{n}) + \log(c)$ for some constant $c$.
+
+		Red-Black trees don't have this advantage, since low valued keys would be closer to the leftmost side of the tree, and possibly near the bottom. This would make the practical number of comparisons around $\log(n)$ for low valued keys.
+
 	\end{enumerate}
-	
 
 \end{enumerate}
 \end{document}
