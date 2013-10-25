@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2013.10.9)  25 OCT 2013 03:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Arch Linux) (format=pdflatex 2013.10.9)  25 OCT 2013 04:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -528,25 +528,41 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 51.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 56.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 56.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 56.
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./document.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./document.aux) ) 
 Here is how much of TeX's memory you used:
- 3358 strings out of 493311
- 42355 string characters out of 6143650
- 101557 words of memory out of 5000000
- 6727 multiletter control sequences out of 15000+600000
- 25667 words of font info for 34 fonts, out of 8000000 for 9000
+ 3386 strings out of 493311
+ 42650 string characters out of 6143650
+ 111557 words of memory out of 5000000
+ 6745 multiletter control sequences out of 15000+600000
+ 37698 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,6n,24p,238b,203s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/sh
-are/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf-dist/fonts/type1/
-public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></us
-r/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb>
-Output written on document.pdf (1 page, 74630 bytes).
+ 37i,14n,24p,366b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/us
+r/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf-dist/fonts/en
+c/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.en
+c}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf-dis
+t/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lme
+x10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/sh
+are/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/lm/lmr5.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr7.pfb></u
+sr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/lm/lmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb>
+Output written on document.pdf (2 pages, 149164 bytes).
 PDF statistics:
- 21 PDF objects out of 1000 (max. 8388607)
- 14 compressed objects within 1 object stream
+ 62 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

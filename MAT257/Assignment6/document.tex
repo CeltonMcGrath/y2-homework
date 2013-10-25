@@ -53,9 +53,100 @@
 
 	\item Munkres \S8, \#2
 	\begin{enumerate}
-		\item 
+		\item Suppose that $f(x,y) = f(a,b)$ where $y,b \in (0, 2\pi)$. Then we have:
+		\begin{align*}
+		f(x,y) &= f(a,b) \implies \\
+		\|f(x,y)\| &= \|f(a,b)\| \implies \\
+		\sqrt{(e^x \cos y)^2 + (e^x \sin y)^2} & = \sqrt{(e^a \cos b)^2 + (e^a \sin b)^2} \implies \\
+		e^{2x} (\cos^2 y + \sin^2 y) & = e^{2a} (\cos^2 b + \sin^2 b) \implies \\
+		e^{2x} & = e^{2a} \implies \\
+		x & = a
+		\end{align*}
+		Given $x = a$, the below follows:
+		\begin{align*}
+		f(x,y) &= f(a,b) \implies \\
+		e^x \cos y &= e^a \cos b \implies \\
+		\cos y &= \cos b 
+		\end{align*}
+		And:
+		\begin{align*}
+		f(x,y) &= f(a,b) \implies \\
+		e^x \sin y &= e^a \sin b \implies \\
+		\sin y &= \sin b
+		\end{align*}
+		Since $y$ and $b$ are in $(0, 2\pi)$ then this implies $y = b$. Since $f(x,y) = f(a,b) \implies (x, y) = (a, b)$ the function is one to one.
+
+		\item $B = \mathbb{R}^2 - L$ where $L$ is the set $\{\; t(1,0) \;\big|\; t \in \mathbb{R}^{+} \;\}$.
+		This is because for any $(x,y) \in \mathbb{R}^2$ if we can find a $\theta \in (0, 2\pi)$ an $r \in \mathbb{R}^{+}$ such that $(x, y) = (r \cos \theta, r \sin \theta)$ unless $x \in L$, since in that case $\theta = 0$ or $2\pi$. In the context of our function, for any $(r, \theta)$ we can get $(x, y)$ through the function $f(\log r, \theta)$. 
+
+		\item By the inverse function theorem, if $Df(x,y)$ is nonsingular, then the function is one to one in some neighborhood of $(x,y)$ and the inverse function $g$ has the derivative $Dg(f(x,y)) = [Df(x,y)]^{-1}$. Taking $Df(x,y)$ for any $(x, y) \in \mathbb{R}^2$ yields:
+		\begin{align*}
+		Df(x,y) & =  \left[ \begin{matrix}
+			\frac{\partial  f_1}{\partial x} & \frac{\partial  f_1}{\partial y}  \\
+			\frac{\partial  f_2}{\partial x} & \frac{\partial  f_2}{\partial y} 
+	 \end{matrix} \right] \\
+		& =  \left[ \begin{matrix}
+		e^x \cos y & -e^x \sin y \\
+		e^x \sin y & e^x \cos y
+	 \end{matrix} \right]
+	 \end{align*}
+	 The determinant of this matrix will be $(e^x \cos y)^2 + (e^x \sin y)^2 = e^{2x}$. Since $e^{2x} > 0$ for all $x$ this means the function's derivative is invertible anywhere.
+
+	 Speaking generally again, if we take the formula for the inverse of a $2 \times 2$ matrix we find that $Df(x,y)^{-1}$ is:
+		\begin{align*}
+		\left[ \begin{matrix}
+		e^x \cos y & -e^x \sin y \\
+		e^x \sin y & e^x \cos y
+	 \end{matrix} \right]^{-1} &=
+		\frac{1}{e^{2x}} \left[ \begin{matrix}
+		e^x \cos y & e^x \sin y \\
+		-e^x \sin y & e^x \cos y
+	 \end{matrix} \right] 
+	 \end{align*}
+	 To find $Dg(0,1)$ we must find an $(x, y)$ such that $f(x,y) = (0,1)$. Heuristically, we know that there exists a $\theta$ such that $\sin \theta = 1$ and $\cos \theta = 0$. If we let $x = 0$ and $y = \frac{\pi}{2}$ then $f(x,y) = (0, 1)$. Plugging the vector $(0, \pi/2)$ into our inverted matrix formula yields:
+	 $$\frac{1}{e^{2x}}\left[ \begin{matrix}
+		e^x \cos y & e^x \sin y \\
+		-e^x \sin y & e^x \cos y
+	 \end{matrix} \right] = 
+	 \left[	\begin{matrix} 
+	  0 & 1 \\
+		-1 & 0
+	 \end{matrix} \right] 
+	  $$
+	  Which is $Dg(0,1)$.
 	\end{enumerate}
 
+	\item Munkres \S8, \#3
+
+	Expanding the function $f$ out into it's component functions:
+	\begin{align*}
+		f_1(x,y) & = x(x^2 + y^2) \\
+		f_2(x,y) & = y(x^2 + y^2) 
+	\end{align*}
+	These are simple polynomials. This means $f$ is of class $C^{\infty}$
+
+	Let $x, y \in B(0;1)$. Suppose $f(x) = f(y)$. Then $\|f(x)\| = \|f(y)\|$ and therefore:
+	\begin{align*}
+		\| \|x\|^2 \cdot x \| &=  \| \|y\|^2 \cdot y \| \implies \\
+		\|x\|^2 \| x \| &=  \|y\|^2 \| y \| \implies \\
+		\|x\| &=  \|y\| 
+	\end{align*}
+	If $\|x\| = \|y\| = 0$ then $x = y = 0$. Otherwise, we have $\|x\|^2 \cdot x = \|y\|^2 \cdot y$. Multiplying both sides by $1/\|x\|^2$ yields $x = y$. Therefore $f$ is one to one on the unit ball.
+
+	For any $(x, y) \in \mathbb{R}^2$, $Df(x,y)$ will be the matrix:
+	 $$\left[ \begin{matrix} 
+	  3 x^2 + y^2 & 2xy \\
+		2xy & 3y^2 + x^2
+	 \end{matrix} \right] 
+	  $$
+	Since $f(0, 0) = 0$, the inverse function $g$ must have a derivative that is the inverse of $f$ at 0.  However, when $(x,y) = 0$ all of the terms in the matrix go to zero, and therefore it is not invertible. Hence, $g$ is not differentiable at 0.
+
+	\item Munkres \S8, \#5
+	
+
+	\item Munkres \S9, \#3
+	\item Munkres \S9, \#4
+	\item Munkres \S9, \#5
 
 \end{enumerate}
 \end{document}
