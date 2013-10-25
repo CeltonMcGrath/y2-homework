@@ -106,7 +106,7 @@
 		\end{align*}
 		By way of the linearity of expectation an the equality $\text{E}[I\{A\}] = \text{Pr}\{A\}$.
 		The expected length of the list after $k-1$ operations is $(k-1)p$.
-		\item At this point the expected size of the list is $(k-1)p$. Assuming that the $k$th operation is an access, the number of expected number of steps would be:
+		\item At this point the expected size of the list is $(k-1)p$. Assume that the $k$th operation is an access. Because the parameter for the access is chosen uniformly from the interval $[1,|S|]$, the expected number of steps will be:
 		\begin{align*}
 			\text{E}\big[I\big] & = \sum^{|S|}_{n=1} \frac{1}{|S|} n \implies \\
 			\text{E}\big[I\big] & = \sum^{(k-1)p}_{n=1} \frac{n}{(k-1)p} \implies \\
