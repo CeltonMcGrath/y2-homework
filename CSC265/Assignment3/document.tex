@@ -85,7 +85,11 @@
 
   \begin{enumerate}
     \item Suppose at the beginning $H$ and $T$ are empty. Suppose the first $m-1$ operations are enqueues. This means that $T$ has a size $m-1$. If the $m$th operation is a dequeue, then we must copy all $m-1$ elements over to $H$, which will take $\Omega(m)$ time. This is also an upper bound on the worse case, since the only operation that takes more than constant time is dequeue, and it's runtime is proportional to the number of elements in $T$. Since the number of elements in $T$ is bounded above by the number of enqueues that have added elements to it, and the number of enqueues is bounded by $m$, this means any dequeue operation after $m$ operations by starting when empty stacks cannot take more than $O(m)$ time. Therefore the worst case is in $\Theta(m)$.
-    \item 
+    \item Suppose that pushing or popping elements of a stack costs us one unit of time, but our amortized cost will be three units of time. Also, suppose that every time we push an element onto $T$ we associate the leftover 2 credits with that element. If $T$ is empty at the beginning of the $m$ operations, enqueuing an object will give $T$ an element, as well as 2 extra credits to do a push or a pop later. If $T$ has $n$ elements and $2n$ extra credits, then enqueuing another object will leave $T$ with $n+1$ elements and $2(n+1)$ extra credits. By induction, this implies that $T$ will always have $2n$ extra credits, where $n$ is the number of elements in $T$.
+    
+    When a dequeue call is done when $H$ is non-empty we will simply throw out the extra credits.
+    
+    Consider now a dequeue call when $H$ is empty. We must copy all elements of $T$ over to $H$ which will require a push and a pop for each element, totaling to $2n$ units of time. Thankfully, $T$ has exactly that many extra credits, so this operation will take amortized constant time. 
   \end{enumerate}
 
   \clearpage
