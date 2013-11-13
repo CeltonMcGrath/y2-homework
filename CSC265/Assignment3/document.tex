@@ -58,21 +58,21 @@
 \addtolength{\belowdisplayskip}{-25mm}
 \begin{document}
 \title{Assignment 3 - CSC265}
-\author{David Knott \\ Student \#999817685 \\ \\  Celton McGrath \\ Student \#999632303}
+\author{David Knott \\ Student \#999817685 \\ \vspace{-1mm} \\  Celton McGrath \\ Student \#999632303}
 \date{November 14, 2013}
 \maketitle
 \begin{enumerate}
-  \item Note that $z \in \{x_j + y_i : 1 \leq j, i \leq n \}$ if and only if there exists an $j, i \in [1,\dots, n] $ such that $z = x_j + y_i$. Furthermore, this is equivalent to $z - y_i = x_j$ for some $j, i \in [1,\dots, n] $. Using this fact to our advantage, we produce the following two step algorithm:
+  \item Note that $z \in \{x_j + y_i : 1 \leq j, i \leq n \}$ if and only if there exists a pair $1 \leq j, i \leq n $ such that $z = x_j + y_i$. Furthermore, this is true iff $z - y_i = x_j$. Using this fact to our advantage, we provide the following two step algorithm:
 
-  Let $h : \mathbb{R} \to [1,\dots, n] $ be a universal hash function. Let $a$ be a sequence of $n$ linked lists. The first step of our algorithm will iterate over all $x$ and append it to $a[h(x)]$. This will take $O(n)$ time.
+  Let $h : \mathbb{N} \to [1,\dots, n] $ be a universal hash function. Let $a$ be a sequence of $n$ linked lists. The first step of our algorithm will iterate over all $x$ and append it to $a[h(x)]$. This will take $O(n)$ time.
 
-  Once this is done, to determine if a number $t = x_j$ for some $j \in [1,\dots,n]$ we must simply check the entries of $a[h(t)]$ for equality. If $a[v]$ is, on average, constant for any $v \in [1,\dots,n]$ then this will take expected time $O(1)$.
+  Once this is done, to determine if a number $t = x_j$ for some $1 \leq j \leq n$ we must simply check the entries of $a[h(t)]$ for equality. If $a[v]$ is, on average, constant for any $1 \leq v \leq n $ then this will take expected time $O(1)$.
 
-  The next step does exactly this by determining, for all $i \in [1,\dots,n]$, if $z - y_i = x_j$ for some $j \in [1,\dots,n]$. This is done by iterating over $y$ and searching for $z - y$ in $a[h(z-y)]$. Assuming the expected time for the search is $O(1)$, the expected time to iterate over all $y$ will be order $O(n)$.
+  The next step does exactly this by determining, for all $1 \leq i \leq n$, if $z - y_i = x_j$ for some $1 \leq j \leq n$. This is done by iterating over $y$ and searching for $z - y$ in $a[h(z-y)]$. Assuming the expected time for the search is $O(1)$, the expected time to iterate over all $y$ will be order $O(n)$.
 
-  Finally, we must prove that if $h$ is a universal hash function then $a[h(v)]$ will on average be constant. To do this we use the property that for any $i \in D(h)$ and $y \in R(h)$\footnote{Here the functions $D$ and $R$ denote the domain and range.} we have that $\mathrm{Pr}_h(h(i) = y) = 1/n $. To find the estimated size of any $m \in a$ would be equivalent to counting the estimated number of $x \in [1,\dots,n]$ that map to $m$. Suppose $a[y] = m$, then we have the following:
+  Finally, we must prove that if $h$ is a universal hash function then $a[h(v)]$ will on average be constant. To do this we use the property that for any $i, y \in [1,\dots, n]$ we have that $\mathrm{Pr}_h(h(x_{i}) = y) = 1/n $. To find the estimated size of any $m \in a$ would be equivalent to counting the estimated number of $1 \leq x \leq n$ that map to $m$. Suppose $a[y] = m$:
   \begin{align*}
-    \mathrm{Ex} [|m|] & = \sum_{i=1}^n \mathrm{Pr}_h(h(i) = y) \\
+    \mathrm{Ex} [|m|] & = \sum_{i=1}^n \mathrm{Pr}_h(h(x_{i}) = y) \\
     & = \sum_{i=1}^n 1/n \\
     & = 1
   \end{align*}
@@ -85,7 +85,7 @@
 
   \begin{enumerate}
     \item Suppose at the beginning $H$ and $T$ are empty. Suppose the first $m-1$ operations are enqueues. This means that $T$ has a size $m-1$. If the $m$th operation is a dequeue, then we must copy all $m-1$ elements over to $H$, which will take $\Omega(m)$ time. This is also an upper bound on the worse case, since the only operation that takes more than constant time is dequeue, and it's runtime is proportional to the number of elements in $T$. Since the number of elements in $T$ is bounded above by the number of enqueues that have added elements to it, and the number of enqueues is bounded by $m$, this means any dequeue operation after $m$ operations by starting when empty stacks cannot take more than $O(m)$ time. Therefore the worst case is in $\Theta(m)$.
-    \item Suppose that pushing or popping elements of a stack costs us one unit of time, but our amortized cost will be three units of time. Also, suppose that every time we push an element onto $T$ we associate the leftover 2 credits with that element. If $T$ is empty at the beginning of the $m$ operations, enqueuing an object will give $T$ an element, as well as 2 extra credits to do a push or a pop later. If $T$ has $n$ elements and $2n$ extra credits, then enqueuing another object will leave $T$ with $n+1$ elements and $2(n+1)$ extra credits. By induction, this implies that $T$ will always have $2n$ extra credits, where $n$ is the number of elements in $T$.
+    \item Suppose that pushing or popping elements to and from a stack costs us one unit of time, but our amortized cost will be three units of time. Also, suppose that every time we push an element onto $T$ we associate the leftover 2 credits with that new, added element. If $T$ is empty, enquing an object will give $T$ an element, as well as 2 extra credits to do a push or a pop later. If $T$ has $n$ elements and $2n$ extra credits, then enqueuing another object will leave $T$ with $n+1$ elements and $2(n+1)$ extra credits. By induction, this implies that $T$ will always have at least $2n$ extra credits, where $n$ is the number of elements in $T$.
     
     When a dequeue call is done when $H$ is non-empty we will simply throw out the extra credits.
     
@@ -128,7 +128,7 @@
     \end{enumerate}
     To modify this, we make the following changes to each step:
 
-    After steps 1 and 2 we create an variable $k$ that is initialized to 0.  In step five, in addition to setting $x.p = w$ we also set $x.d = x.d + k$ and then $k = x.d$. Once we've processed all the elements on the stack, we return $k$ as the number of nodes between the root and $v$, including the root.
+    After steps 1 and 2 we create an variable $k$ that is initialized to 0.  In step five, in addition to setting $x.p = w$ we also set $x.d = x.d + k$ and then $k = x.d$. Once we've processed all the elements on the stack, we return $k$ as the number of nodes in the path fron $v$ to it's root.
     \item 
     \item 
   \end{enumerate}
