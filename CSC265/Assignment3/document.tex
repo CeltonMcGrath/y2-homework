@@ -126,11 +126,22 @@
       \item Finally we pop an element off the stack, call it $x$, and let $x.p = w$. We repeat this for all elements of the stack. This is the path compression step.
       \item We return $w$.
     \end{enumerate}
-    To modify this, we make the following changes to each step:
-
-    After steps 1 and 2 we create an variable $k$ that is initialized to 0.  In step five, in addition to setting $x.p = w$ we also set $x.d = x.d + k$ and then $k = x.d$. Once we've processed all the elements on the stack, we return $k$ as the number of nodes in the path fron $v$ to it's root.
-    \item 
-    \item 
-  \end{enumerate}
+    To implement FIND-DEPTH, we make the following changes. After steps 1 and 2 we create a variable $k$ that is initialized to 0.  In step five, in addition to setting $x.p = w$ we also set $x.d = x.d + k$ and then $k = x.d$. Once we've processed all the elements on the stack, we return $k$ as the number of nodes in the path from $v$ to its root. 
+\\At a higher level, $\textit{FIND-DEPTH}(v)$ adds the sum of depth values between $v$ and the root (exclusive) to $v.d$.
+\newpage
+    \item Implement GRAFT so that it is analougous to UNION and modify as follows LINK. For a node x in a tree $T$, let $x.ps$ be the parent of $x$ in the disjoint-set-tree $S$ used for depth-determinition.
+\\GRAFT(r, v): LINK(FIND-DEPTH(r), FIND-DEPTH(v), v)
+\\LINK(x, y, v):
+\begin{itemize}
+\item If $x.rank > y.rank$: 
+\\ $x.d += (y.d + v.d)$
+\\ $y.d -= x.d$
+\\ $y.ps = x$
+\\ $x.rank += 1$
+\item Else: $x.d += v.d$
+\\ $x.ps = y$
+\end{itemize}
+Explanation of LINK: In the case where the disjoint-set tree rooted at x, $S_1$, has greater rank than that of y, $S_2$, $y$ becomes a child of $x$, but the depth calculation of all children in $S_1$ will be under by the depth of $v$. This is managed by increasing $x.d$ accordingly, but since $y$ in $S_2$ is now a child of x, all children in $S_2$ are over in depth by new value of $x.d$. Thus, we decrease the value of $y.d$ accordingly. Otherwise, $x$ is made a child of $y$, and the children of $S_1$ are now under by $v.d$, so we adjust accordingly. 
+\end{enumerate}
 \end{enumerate}
 \end{document}
