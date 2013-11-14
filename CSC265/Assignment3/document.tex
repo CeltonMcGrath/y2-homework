@@ -57,7 +57,7 @@
 \newcommand*{\QEDA}{\hfill\ensuremath{\blacksquare}}
 \addtolength{\belowdisplayskip}{-25mm}
 \begin{document}
-\title{Assignment 3 - CSC265}
+\title{Assignment 3 - CSC265, Part I}
 \author{David Knott \\ Student \#999817685 \\ \vspace{-1mm} \\  Celton McGrath \\ Student \#999632303}
 \date{November 14, 2013}
 \maketitle
@@ -70,10 +70,10 @@
 
   The next step does exactly this by determining, for all $1 \leq i \leq n$, if $z - y_i = x_j$ for some $1 \leq j \leq n$. This is done by iterating over $y$ and searching for $z - y$ in $a[h(z-y)]$. Assuming the expected time for the search is $O(1)$, the expected time to iterate over all $y$ will be order $O(n)$.
 
-  Finally, we must prove that if $h$ is a universal hash function then $a[h(v)]$ will on average be constant. To do this we use the property that for any $i, y \in [1,\dots, n]$ we have that $\mathrm{Pr}_h(h(x_{i}) = y) = 1/n $. To find the estimated size of any $m \in a$ would be equivalent to counting the estimated number of $1 \leq x \leq n$ that map to $m$. Suppose $a[y] = m$:
+  Finally, we must prove that if $h$ is a universal hash function then $a[h(v)]$ will on average be constant. To do this we use the property that for any $i, y \in [1,\dots, n]$ we have that $\mathrm{Pr}_h(h(x_{i}) = y) = \frac{1}{n} $. To find the estimated size of any $m \in a$ would be equivalent to counting the estimated number of $1 \leq x \leq n$ that map to $m$. Suppose $a[y] = m$:
   \begin{align*}
     \mathrm{Ex} [|m|] & = \sum_{i=1}^n \mathrm{Pr}_h(h(x_{i}) = y) \\
-    & = \sum_{i=1}^n 1/n \\
+    & = \sum_{i=1}^n \frac{1}{n} \\
     & = 1
   \end{align*}
   Therefore the expected size of any $m \in a$ will be constant, and hence a search over any list in $a$ will be expected order $O(1)$. 
@@ -89,14 +89,18 @@
     
     When a dequeue call is done when $H$ is non-empty we will simply throw out the extra credits.
     
-    Consider now a dequeue call when $H$ is empty. We must copy all elements of $T$ over to $H$ which will require a push and a pop for each element, totaling to $2n$ units of time. Thankfully, $T$ has exactly that many extra credits, so this operation will take amortized constant time. 
+    Consider now a dequeue call when $H$ is empty. We must copy all elements of $T$ over to $H$ which will require a push and a pop for each element, totaling to $2n$ units of time. Thankfully, $T$ has exactly $2n$, so this operation will take amortized constant time. 
   \end{enumerate}
 
   \clearpage
   \item
 
   \begin{enumerate}
-    \item Since \textit{GRAFT} and \textit{MAKE-TREE} are $O(1)$, the complexity would have to come from \textit{FIND-DEPTH}, which is $O(k)$ where $k$ is the length from the searched node to it's root. Suppose $T(f(x))$ is the runtime of $f$ on $x$. Let $T(\textit{GRAFT}(r, v)) = 1$, $T(\textit{MAKE-TREE}(v)) = 1$ and $T(\textit{FIND-DEPTH}(v)) = k$ where $k$ is the number of nodes from $v$ to it's root, including the root and itself. Note that $T(\textit{FIND-DEPTH}(v))$ can be at most the number of nodes in the forest. The worst case for $m$ operations would then be a scenario where \textit{FIND-DEPTH} is run some multiple of $m$ times, and each time it's run, say at step $i$, it takes some multiple of $i$ times. 
+    \item Let $T: N \rightarrow R$ represent the worst case run-time of a sequence of $m$ operations of MAKE-TREE, FIND-DEPTH, and GRAFT. 
+\\$T \in O(m^2)$: In the worst case, both GRAFT and FIND-DEPTH take worse case $O(m)$ runtime, and MAKE-TREE takes worse case $O(1)$ runtime. Thus, in any sequence of $m$ operations, the worst case runtime is $O(m^2)$.
+\\$T \in \Omega(m^2)$: Suppose $T(f(x))$ is the runtime of $f$ on $x$. 
+\\Let $T(\textit{GRAFT}(r, v)) = 1$, $T(\textit{MAKE-TREE}(v)) = 1$ and 
+\\$T(\textit{FIND-DEPTH}(v)) = k$ where $k$ is the number of nodes from $v$ to it's root, including the root and itself. Note that $T(\textit{FIND-DEPTH}(v))$ can be at most the number of nodes in the forest. The worst case for $m$ operations would then be a scenario where \textit{FIND-DEPTH} is run some multiple of $m$ times, and each time it's run, say at step $i$, it takes some multiple of $i$ times. 
 
     Suppose we did the following operations: we initially create one tree in our forest, call it $t$, that contains the single node $p$. Then, for the next $m-1$ operations we alternate between the following three operations:
     \begin{enumerate}[1.]
@@ -114,9 +118,10 @@
       &= 1 + \frac{2(m-1)}{3} + \sum_{i=1}^{\frac{(m-1)}{3}} \frac{i}{3}
     \end{align*}
 
-    The last sum will be in $\Theta(m^2)$, so $T(\textit{m operations}) \in \Theta(m^2)$.
+The last sum will be in $\Omega(m^2)$, so $T(\textit{m operations}) \in \Omega(m^2)$.
+\\Then $T \in \Theta(m^2)$.
 
-    \item $\textit{MAKE-TREE}(v)$ will initialize two trees, both with one node, $v$ at it's root. It will then put the first tree in the forest $\mathcal{F}$. The second tree's root node will get a second field which will contain it's pseudodistance, which is initialized to 1. This tree is then inserted into the forest $\mathcal{S}$.
+    \item $\textit{MAKE-TREE}(v)$ will initialize two trees, both with one node, $v$ at it's root. It will then put the first tree in the forest $\mathcal{F}$. The second tree's root node will get a second field which will contain its pseudodistance, which is initialized to 1. The third field, its rank, is intialized to 0. This tree is then inserted into the forest $\mathcal{S}$.
     \item To modify the function $\textit{FIND-SET}(v)$ it will be beneficial to go over how it works. Though the book uses a recursive function, I find it may be easier to use an iterative one. In the iterative case, \textit{FIND-SET} works like so:
     \begin{enumerate}[1.]
       \item Given the input node $v$ from the forest $\mathcal{F}$, suppose $v.toS$ returns the corresponding node in $\mathcal{S}$. Let $w = v.toS$. 
@@ -126,11 +131,22 @@
       \item Finally we pop an element off the stack, call it $x$, and let $x.p = w$. We repeat this for all elements of the stack. This is the path compression step.
       \item We return $w$.
     \end{enumerate}
-    To modify this, we make the following changes to each step:
-
-    After steps 1 and 2 we create an variable $k$ that is initialized to 0.  In step five, in addition to setting $x.p = w$ we also set $x.d = x.d + k$ and then $k = x.d$. Once we've processed all the elements on the stack, we return $k$ as the number of nodes in the path fron $v$ to it's root.
-    \item 
-    \item 
-  \end{enumerate}
+    To implement FIND-DEPTH, we make the following changes. After steps 1 and 2 we create a variable $k$ that is initialized to 0.  In step five, in addition to setting $x.p = w$ we also set $x.d = x.d + k$ and then $k = x.d$. Once we've processed all the elements on the stack, we return $k$ as the number of nodes in the path from $v$ to its root. 
+\\At a higher level, $\textit{FIND-DEPTH}(v)$ adds the sum of depth values between $v$ and the root (exclusive) to $v.d$.
+\newpage
+    \item Implement GRAFT so that it is analogous to UNION and modify as follows LINK. For a node x in a tree $T$, let $x.ps$ be the parent of $x$ in the disjoint-set-tree $S$ used for depth-determinition.
+\\GRAFT(r, v): LINK(FIND-DEPTH(r), FIND-DEPTH(v), v)
+\\LINK(x, y, v):
+\begin{itemize}
+\item If $x.rank > y.rank$: 
+\\ $x.d += (y.d + v.d)$
+\\ $y.d -= x.d$
+\\ $y.ps = x$
+\item Else: $x.d += v.d$
+\\ $x.ps = y$
+\\ If $x.rank = y.rank$: $y.rank ++$
+\end{itemize}
+Explanation of LINK: In the case where the disjoint-set tree rooted at x, $S_1$, has greater rank than that of y, $S_2$, $y$ becomes a child of $x$, but the depth calculation of all children in $S_1$ will be under by the depth of $v$. This is managed by increasing $x.d$ accordingly, but since $y$ in $S_2$ is now a child of x, all children in $S_2$ are over in depth by new value of $x.d$. Thus, we decrease the value of $y.d$ accordingly. Otherwise, $x$ is made a child of $y$, and the children of $S_1$ are now under by $v.d$, so we adjust accordingly. 
+\end{enumerate}
 \end{enumerate}
 \end{document}
